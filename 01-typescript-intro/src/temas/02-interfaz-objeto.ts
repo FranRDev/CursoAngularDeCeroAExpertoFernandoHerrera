@@ -2,19 +2,19 @@ const habilidades: string[] = ['Bash', 'Counter', 'Healting'];
 
 interface Personaje {
     nombre: string;
-    hp: number;
+    pv: number;
     habilidades: string[];
     puebloNatal?: string;
 }
 
-const Aragorn: Personaje = {
+const aragorn: Personaje = {
     nombre: 'Aragorn',
-    hp: 100,
+    pv: 100,
     habilidades: ['Bash', 'Counter']
 };
 
-Aragorn.puebloNatal = 'Rivendell';
+aragorn.puebloNatal = 'Rivendell';
 
-console.table(Aragorn);
+console.table(aragorn);
 
 export {};

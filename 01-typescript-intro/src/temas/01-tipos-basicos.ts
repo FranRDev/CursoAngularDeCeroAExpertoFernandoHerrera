@@ -1,9 +1,9 @@
 const nombre: string = 'Aragorn';
-let puntosHp: number | 'FULL' = 95;
+let puntosVida: number | 'FULL' = 95;
 const estaVivo: boolean = true;
 
-puntosHp = 'FULL';
+puntosVida = 'FULL';
 
-console.log({nombre, puntosHp, estaVivo});
+console.log({nombre, puntosHp: puntosVida, estaVivo});
 
 export {};
