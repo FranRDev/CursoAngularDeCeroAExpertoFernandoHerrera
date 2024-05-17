@@ -8,10 +8,31 @@ function multiplicar(primerNumero: number, segundoNumero?: number, base: number 
     return primerNumero * base;
 }
 
-const resultado: number = anhadirNumeros(1, 2);
-const resultado2: string = anhadirNumerosFlecha(1, 2);
-const resultadoMultiplicacion: number = multiplicar(5);
+// const resultado: number = anhadirNumeros(1, 2);
+// const resultado2: string = anhadirNumerosFlecha(1, 2);
+// const resultadoMultiplicacion: number = multiplicar(5);
+//console.log({resultado, resultado2, resultadoMultiplicacion});
 
-console.log({resultado, resultado2, resultadoMultiplicacion});
+interface Personaje {
+    nombre: string;
+    pv: number;
+    mostrarPv: () => void;
+}
+
+const sanarPersonaje = (personaje: Personaje, cantidad: number) => {
+    personaje.pv += cantidad;
+};
+
+const aragorn: Personaje = {
+    nombre: 'Aragorn',
+    pv: 50,
+    mostrarPv() {
+        console.log(`Puntos de vida ${this.pv}`);
+    }
+}
+
+sanarPersonaje(aragorn, 10);
+
+aragorn.mostrarPv();
 
 export {};
