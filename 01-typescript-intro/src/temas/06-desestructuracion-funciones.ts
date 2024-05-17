@@ -21,21 +21,24 @@ interface OpcionesCalculoImpuesto {
 function calcularImpuesto(opciones: OpcionesCalculoImpuesto): number[] {
     let total = 0;
 
-    opciones.productos.forEach(producto => {
-        total += producto.precio;
+    const { productos, impuesto } = opciones;
+
+    productos.forEach(producto => {
+        let { precio } = producto;
+        total += precio;
     });
 
-    return [total, total * opciones.impuesto];
+    return [total, total * impuesto];
 }
 
 const carritoCompra = [telefono, tablet];
 const impuesto = 0.15;
-const resultado = calcularImpuesto({
+const [total, impuestoTotal] = calcularImpuesto({
     productos: carritoCompra,
     impuesto
 });
 
-console.log('Total: ', resultado[0]);
-console.log('Impuesto: ', resultado[1]);
+console.log('Total: ', total);
+console.log('Impuesto: ', impuestoTotal);
 
 export {};
