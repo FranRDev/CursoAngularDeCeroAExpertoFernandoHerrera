@@ -31,5 +31,4 @@ const { autor } = detalles;
 const [, , trunks = 'No encontrado']: string[] = ['Goku', 'Vegeta'];
 console.log('Personaje 3: ', trunks);
 
-
 export {};
