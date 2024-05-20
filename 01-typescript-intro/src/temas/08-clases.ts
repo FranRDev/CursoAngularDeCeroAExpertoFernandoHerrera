@@ -1,14 +1,14 @@
 export class Persona {
 
-    public nombre: string;
-    private direccion: string;
+    // public nombre: string;
+    // private direccion: string;
 
-    constructor() {
-        this.nombre = 'Francisco';
-        this.direccion = 'Sevilla';
-    }
+    constructor(
+        public nombre: string,
+        private direccion: string = 'Sin dirección'
+    ) { }
 
 }
 
-const ironman = new Persona();
-console.log(ironman.direccion);
+const ironman = new Persona('Iron Man', 'Nueva York');
+console.log(ironman);
