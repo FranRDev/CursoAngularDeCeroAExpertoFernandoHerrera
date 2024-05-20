@@ -6,7 +6,8 @@ import './style.css'
 // import './temas/05-desestructuracion-basica'
 // import './temas/06-desestructuracion-funciones'
 // import './temas/07-importar-exportar'
-import './temas/08-clases'
+// import './temas/08-clases'
+import './temas/09-genericos'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   Hola mundo
