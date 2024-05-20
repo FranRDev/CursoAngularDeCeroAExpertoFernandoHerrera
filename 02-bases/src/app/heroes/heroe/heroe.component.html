@@ -14,5 +14,22 @@
   <dd>{{nombreMayusculas}}</dd>
 </dl>
 
-<button class="btn btn-primary mx-2" (click)="cambiarHeroe()">Cambiar nombre</button>
-<button class="btn btn-primary" (click)="cambiarEdad()">Cambiar edad</button>
+<button
+  class="btn btn-primary mx-2"
+  (click)="cambiarHeroe()"
+  *ngIf="nombre !== 'spider-man'">
+  Cambiar nombre
+</button>
+
+<button
+  class="btn btn-primary"
+  (click)="cambiarEdad()"
+  *ngIf="edad !== 24">
+  Cambiar edad
+</button>
+
+<button
+  class="btn btn-primary mx-2"
+  (click)="reiniciar()">
+  Reiniciar
+</button>

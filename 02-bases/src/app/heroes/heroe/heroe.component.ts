@@ -26,4 +26,9 @@ export class HeroeComponent {
     this.edad = 24;
   }
 
+  reiniciar(): void {
+    this.nombre = 'iron man';
+    this.edad = 45;
+  }
+
 }
