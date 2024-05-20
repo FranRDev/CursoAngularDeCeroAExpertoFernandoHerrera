@@ -1,5 +1,7 @@
 <h1>{{title}}</h1>
 <hr>
-<p>
-  <b>Contador: {{contador}}</b>
-</p>
+<h3>Contador: {{contador}}</h3>
+
+<button (click)="incrementarPor(1)">+1</button>
+<button (click)="reiniciar()">Reiniciar</button>
+<button (click)="incrementarPor(-1)">-1</button>
