@@ -1,4 +1,3 @@
-import { Persona } from './08-clases';
 export class Persona {
 
     // public nombre: string;
