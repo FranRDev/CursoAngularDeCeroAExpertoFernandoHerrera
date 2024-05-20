@@ -8,7 +8,8 @@ import './style.css'
 // import './temas/07-importar-exportar'
 // import './temas/08-clases'
 // import './temas/09-genericos'
-import './temas/10-decoradores'
+// import './temas/10-decoradores'
+import './temas/11-encadenamiento-opcional'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   Hola mundo
