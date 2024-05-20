@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
 export class ListaComponent {
 
   public heroes: string[] = ['Spider-Man', 'Iron Man', 'Hulk', 'She-Hulk', 'Thor'];
+  public heroeEliminado?: string;
+
+  eliminarUltimoHeroe(): void {
+    this.heroeEliminado = this.heroes.pop();
+  }
 
 }
