@@ -7,14 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public title: string = 'Hola mundo';
-  public contador: number = 10;
-
-  incrementarPor(valor: number): void {
-    this.contador += valor;
-  }
-
-  reiniciar() {
-    this.contador = 10;
-  }
-
 }
