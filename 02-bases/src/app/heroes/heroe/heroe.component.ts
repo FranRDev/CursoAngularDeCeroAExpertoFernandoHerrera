@@ -10,4 +10,12 @@ export class HeroeComponent {
   public nombre: string = 'iron man';
   public edad: number = 45;
 
+  get nombreMayusculas(): string {
+    return this.nombre.toUpperCase();
+  }
+
+  obtenerDescripcionHeroe(): string {
+    return `${this.nombre} - ${this.edad}`;
+  }
+
 }
