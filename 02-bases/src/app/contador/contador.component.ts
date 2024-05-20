@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-contador',
   template: `
-  <h1>Hola contador</h1>
   <h3>Contador: {{contador}}</h3>
 
   <button (click)="incrementarPor(1)">+1</button>
