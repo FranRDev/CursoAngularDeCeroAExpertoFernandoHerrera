@@ -9,7 +9,7 @@ import { Personaje } from '../../interfaces/personaje.interface';
 export class ListaComponent {
 
   @Output()
-  personajeEliminado: EventEmitter<number> = new EventEmitter();
+  personajeEliminado: EventEmitter<string> = new EventEmitter();
 
   @Input()
   public listaPersonajes: Personaje[] = [
@@ -19,8 +19,8 @@ export class ListaComponent {
     }
   ];
 
-  eliminarPersonaje(indice: number): void {
-    this.personajeEliminado.emit(indice);
+  eliminarPersonaje(id: string): void {
+    this.personajeEliminado.emit(id);
   }
 
 }
