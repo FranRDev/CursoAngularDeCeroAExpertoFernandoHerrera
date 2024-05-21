@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PaginaPrincipalComponent } from './pages/pagina-principal.component';
 import { ListaComponent } from './components/lista/lista.component';
 import { AnhadirPersonajeComponent } from './components/anhadir-personaje/anhadir-personaje.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AnhadirPersonajeComponent } from './components/anhadir-personaje/anhadi
     PaginaPrincipalComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class DbzModule { }
