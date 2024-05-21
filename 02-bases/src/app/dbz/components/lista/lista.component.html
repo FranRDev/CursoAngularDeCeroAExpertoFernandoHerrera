@@ -3,7 +3,12 @@
 <ul class="list-group">
 
   <li class="list-group-item"
-    *ngFor="let personaje of listaPersonajes; index as indice; first as esPrimero; last as esUltimo; even as esPar; odd as esImpar">
+    *ngFor="let personaje of listaPersonajes; index as indice; first as esPrimero; last as esUltimo; even as esPar; odd as esImpar"
+    [ngClass]="{
+      'list-group-item-success': esPrimero,
+      'list-group-item-dark': esUltimo,
+      'list-group-item-primary': esImpar
+    }">
 
     <span class="text-primary">{{indice + 1}}. </span>
     <span>{{ personaje.nombre }} - </span>
