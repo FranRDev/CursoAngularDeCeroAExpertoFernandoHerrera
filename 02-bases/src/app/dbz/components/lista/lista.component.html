@@ -2,7 +2,7 @@
 
 <ul class="list-group">
 
-  <li class="list-group-item"
+  <li class="list-group-item d-flex justify-content-between align-items-center"
     *ngFor="let personaje of listaPersonajes; index as indice; first as esPrimero; last as esUltimo; even as esPar; odd as esImpar"
     [ngClass]="{
       'list-group-item-success': esPrimero,
@@ -10,14 +10,19 @@
       'list-group-item-primary': esImpar
     }">
 
-    <span class="text-primary">{{indice + 1}}. </span>
-    <span>{{ personaje.nombre }} - </span>
-    <strong>Poder: </strong>
-    <span>{{ personaje.poder }}</span>
-    <!-- <span> Es el primero: {{esPrimero}}</span>
-    <span> Es el último: {{esUltimo}}</span>
-    <span> Es par: {{esPar}}</span>
-    <span> Es impar: {{esImpar}}</span> -->
+    <div>
+      <span class="text-primary">{{indice + 1}}. </span>
+      <span>{{ personaje.nombre }} - </span>
+      <strong>Poder: </strong>
+      <span>{{ personaje.poder }}</span>
+      <!-- <span> Es el primero: {{esPrimero}}</span>
+      <span> Es el último: {{esUltimo}}</span>
+      <span> Es par: {{esPar}}</span>
+      <span> Es impar: {{esImpar}}</span> -->
+    </div>
+
+    <button class="btn btn-danger" (click)="eliminarPersonaje(indice)">X</button>
+
   </li>
 
 </ul>

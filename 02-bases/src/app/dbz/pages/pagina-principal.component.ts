@@ -24,8 +24,11 @@ export class PaginaPrincipalComponent {
   ];
 
   nuevoPersonaje(personaje: Personaje): void {
-    console.log(personaje);
+    this.personajes.push(personaje);
+  }
 
+  eliminarPersonaje(indice: number): void {
+    this.personajes.splice(indice, 1)
   }
 
 }

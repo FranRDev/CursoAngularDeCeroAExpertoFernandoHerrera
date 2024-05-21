@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Personaje } from '../../interfaces/personaje.interface';
 
 @Component({
@@ -8,6 +8,9 @@ import { Personaje } from '../../interfaces/personaje.interface';
 })
 export class ListaComponent {
 
+  @Output()
+  personajeEliminado: EventEmitter<number> = new EventEmitter();
+
   @Input()
   public listaPersonajes: Personaje[] = [
     {
@@ -15,5 +18,9 @@ export class ListaComponent {
       poder: 10
     }
   ];
+
+  eliminarPersonaje(indice: number): void {
+    this.personajeEliminado.emit(indice);
+  }
 
 }
