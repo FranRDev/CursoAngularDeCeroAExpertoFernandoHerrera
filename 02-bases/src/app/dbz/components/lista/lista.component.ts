@@ -19,7 +19,8 @@ export class ListaComponent {
     }
   ];
 
-  eliminarPersonaje(id: string): void {
+  eliminarPersonaje(id?: string): void {
+    if (!id) {return; }
     this.personajeEliminado.emit(id);
   }
 
