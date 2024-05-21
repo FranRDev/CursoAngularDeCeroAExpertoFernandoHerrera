@@ -1,8 +1,9 @@
-<p>lista works!</p>
-
 <h4>Listado</h4>
 
 <ul class="list-group">
-  <li class="list-group-item">Krillin - 500</li>
-  <li class="list-group-item">Goku - 10.000</li>
+  <li class="list-group-item" *ngFor="let personaje of listaPersonajes">
+    <span>{{ personaje.nombre }} - </span>
+    <strong>Poder: </strong>
+    <span>{{ personaje.poder }}</span>
+  </li>
 </ul>
