@@ -3,10 +3,10 @@
 
 <div class="row">
   <div class="col">
-    <dbz-lista [listaPersonajes]="dbzService.personajes" (personajeEliminado)="dbzService.eliminarPersonaje($event)"></dbz-lista>
+    <dbz-lista [listaPersonajes]="personajes" (personajeEliminado)="eliminarPersonaje($event)"></dbz-lista>
   </div>
 
   <div class="col">
-    <dbz-anhadir-personaje (nuevoPersonaje)="dbzService.nuevoPersonaje($event)"></dbz-anhadir-personaje>
+    <dbz-anhadir-personaje (nuevoPersonaje)="nuevoPersonaje($event)"></dbz-anhadir-personaje>
   </div>
 </div>
