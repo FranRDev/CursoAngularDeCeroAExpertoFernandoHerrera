@@ -23,4 +23,9 @@ export class PaginaPrincipalComponent {
     }
   ];
 
+  nuevoPersonaje(personaje: Personaje): void {
+    console.log(personaje);
+
+  }
+
 }
