@@ -11,7 +11,7 @@ export class BarraLateralComponent {
   constructor(private gifsService: GifsService) { }
 
   get busquedas() {
-    return this.gifsService.hisotrialBusqueda;
+    return this.gifsService.historialBusquedas;
   }
 
 }
