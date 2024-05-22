@@ -1,22 +1,24 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { GifsService } from '../../services/gifs.service';
 
 @Component({
   selector: 'buscador-gifs',
   template: `
     <h5>Buscar: </h5>
-    <input type="text" class="form-control" placeholder="Buscar gifs..." (keyup.enter)="buscarEtiqueta()" #entradaEtiqueta>
+    <input type="text" class="form-control" placeholder="Buscar gifs..." (keyup.enter)="buscar()" #entradaBusqueda>
   `
 })
 export class BuscadorComponent {
 
-  @ViewChild('entradaEtiqueta')
-  public entradaEtiqueta!: ElementRef<HTMLInputElement>;
+  @ViewChild('entradaBusqueda')
+  public entradaBusqueda!: ElementRef<HTMLInputElement>;
 
-  constructor() { }
+  constructor(private servicioGifs: GifsService) { }
 
-  buscarEtiqueta(): void {
-    const etiqueta = this.entradaEtiqueta.nativeElement.value;
-    console.log({etiqueta});
+  buscar(): void {
+    const busqueda = this.entradaBusqueda.nativeElement.value;
+    this.servicioGifs.buscar(busqueda);
+    this.entradaBusqueda.nativeElement.value = '';
   }
 
 }

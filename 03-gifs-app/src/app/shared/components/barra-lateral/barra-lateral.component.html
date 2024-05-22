@@ -4,7 +4,7 @@
   <hr class="text-light">
 
   <div class="list-group list-reset">
-    <button class="list-group-item list-group-item-action">Hola</button>
+    <button *ngFor="let busqueda of busquedas" class="list-group-item list-group-item-action">{{busqueda | titlecase}}</button>
   </div>
 
 </div>
