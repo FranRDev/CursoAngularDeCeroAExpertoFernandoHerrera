@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GifsService } from '../../../gifs/services/gifs.service';
+import { ServicioGifs } from '../../../gifs/services/gifs.service';
 
 @Component({
   selector: 'barra-lateral',
@@ -8,7 +8,7 @@ import { GifsService } from '../../../gifs/services/gifs.service';
 })
 export class BarraLateralComponent {
 
-  constructor(private gifsService: GifsService) { }
+  constructor(private gifsService: ServicioGifs) { }
 
   get busquedas() {
     return this.gifsService.historialBusquedas;

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Gif, RespuestaBusqueda } from '../interfaces/gifs.interfaces';
 
 @Injectable({ providedIn: 'root' })
-export class GifsService {
+export class ServicioGifs {
 
   public listaGifs: Gif[] = [];
   private _historialBusquedas: string[] = [];
@@ -35,7 +35,6 @@ export class GifsService {
       .get<RespuestaBusqueda>(`${this.baseUrl}/search`, { params: new HttpParams().set('api_key', this.giphyApiKey).set('q', busqueda).set('limit', 10) })
       .subscribe(respuesta => {
         this.listaGifs = respuesta.data;
-        console.log({gifs: this.listaGifs});
       })
   }
 

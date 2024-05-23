@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { GifsService } from '../../services/gifs.service';
+import { ServicioGifs } from '../../services/gifs.service';
 
 @Component({
   selector: 'buscador-gifs',
@@ -13,7 +13,7 @@ export class BuscadorComponent {
   @ViewChild('entradaBusqueda')
   public entradaBusqueda!: ElementRef<HTMLInputElement>;
 
-  constructor(private servicioGifs: GifsService) { }
+  constructor(private servicioGifs: ServicioGifs) { }
 
   buscar(): void {
     const busqueda = this.entradaBusqueda.nativeElement.value;
