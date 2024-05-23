@@ -10,7 +10,9 @@ export class ServicioGifs {
   private giphyApiKey: string = '';
   private baseUrl: string = 'https://api.giphy.com/v1/gifs';
 
-  constructor(private clienteHttp: HttpClient) { }
+  constructor(private clienteHttp: HttpClient) {
+    this.cargarAlmacenamientoLocal()
+  }
 
   get historialBusquedas() {
     return [...this._historialBusquedas];
@@ -30,6 +32,17 @@ export class ServicioGifs {
 
   private guardarAlmacenamientoLocal(): void {
     localStorage.setItem('historial', JSON.stringify(this._historialBusquedas));
+  }
+
+  private cargarAlmacenamientoLocal(): void {
+    if (!localStorage.getItem('historial')) { return; }
+    this._historialBusquedas = JSON.parse(localStorage.getItem('historial')!);
+    this.cargarBusquedaMasReciente();
+  }
+
+  private cargarBusquedaMasReciente(): void {
+    if (this._historialBusquedas.length === 0) { return; }
+    this.buscar(this._historialBusquedas[0]);
   }
 
   buscar(busqueda: string): void {
