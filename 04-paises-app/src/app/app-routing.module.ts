@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AcercaDeComponent as PaginaAcercaDeComponent } from './shared/pages/acerca-de/acerca-de.component';
-import { ContactoComponent as PaginaContactoComponent } from './shared/pages/contacto/contacto.component';
+import { PaginaAcercaDeComponent } from './shared/pages/acerca-de/acerca-de.component';
+import { PaginaContactoComponent } from './shared/pages/contacto/contacto.component';
 import { PaginaInicioComponent } from './shared/pages/inicio/inicio.component';
 
 const rutas: Routes = [

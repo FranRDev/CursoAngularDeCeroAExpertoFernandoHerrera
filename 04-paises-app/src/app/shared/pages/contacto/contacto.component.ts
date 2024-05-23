@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'pagina-contacto',
   templateUrl: './contacto.component.html'
 })
-export class ContactoComponent {
+export class PaginaContactoComponent {
 
 }

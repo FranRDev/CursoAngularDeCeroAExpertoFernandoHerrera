@@ -2,26 +2,26 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PaginaInicioComponent } from './pages/inicio/inicio.component';
-import { AcercaDeComponent } from './pages/acerca-de/acerca-de.component';
+import { PaginaAcercaDeComponent } from './pages/acerca-de/acerca-de.component';
 import { BarraLateralComponent } from './components/barra-lateral/barra-lateral.component';
 import { RouterModule } from '@angular/router';
-import { ContactoComponent } from './pages/contacto/contacto.component';
+import { PaginaContactoComponent } from './pages/contacto/contacto.component';
 
 @NgModule({
   declarations: [
-    AcercaDeComponent,
+    PaginaAcercaDeComponent,
     PaginaInicioComponent,
     BarraLateralComponent,
-    ContactoComponent
+    PaginaContactoComponent
   ],
   imports: [
     CommonModule,
     RouterModule
   ],
   exports: [
-    AcercaDeComponent,
+    PaginaAcercaDeComponent,
     BarraLateralComponent,
-    ContactoComponent,
+    PaginaContactoComponent,
     PaginaInicioComponent
   ]
 })
