@@ -25,6 +25,11 @@ export class ServicioGifs {
 
     this._historialBusquedas.unshift(busqueda);
     this._historialBusquedas = this._historialBusquedas.splice(0, 10);
+    this.guardarAlmacenamientoLocal();
+  }
+
+  private guardarAlmacenamientoLocal(): void {
+    localStorage.setItem('historial', JSON.stringify(this._historialBusquedas));
   }
 
   buscar(busqueda: string): void {
