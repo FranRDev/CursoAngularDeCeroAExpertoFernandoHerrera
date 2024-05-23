@@ -7,7 +7,7 @@ import { Pais } from '../interfaces/paises.interface';
 @Injectable({providedIn: 'root'})
 export class PaisesService {
 
-  private urlBase: string = 'https://restcountries.com';
+  private urlBase: string = 'https://restcountries.com/v3.1';
 
   constructor(private clienteHttp: HttpClient) { }
 
