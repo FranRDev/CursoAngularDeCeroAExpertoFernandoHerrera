@@ -3,7 +3,7 @@ import { Gif } from '../../interfaces/gifs.interfaces';
 
 @Component({
   selector: 'lista-gifs',
-  templateUrl: './lista-gifs.component.html'
+  templateUrl: './lista.component.html'
 })
 export class ListaGifsComponent {
 
