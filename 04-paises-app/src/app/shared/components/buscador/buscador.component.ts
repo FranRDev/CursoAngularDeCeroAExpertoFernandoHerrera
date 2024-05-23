@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'buscador',
@@ -6,7 +6,17 @@ import { Component, Input } from '@angular/core';
 })
 export class BuscadorComponent {
 
+  @ViewChild('entradaBusqueda')
+  private entradaBusqueda!: ElementRef<HTMLInputElement>;
+
   @Input()
   public placeholder: string = '';
+
+  @Output()
+  public buscando = new EventEmitter<string>;
+
+  public buscar() {
+    this.buscando.emit(this.entradaBusqueda.nativeElement.value);
+  }
 
 }
