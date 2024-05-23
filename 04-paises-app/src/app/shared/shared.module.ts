@@ -3,17 +3,25 @@ import { CommonModule } from '@angular/common';
 
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { AcercaDeComponent } from './pages/acerca-de/acerca-de.component';
+import { BarraLateralComponent } from './components/barra-lateral/barra-lateral.component';
+import { RouterModule } from '@angular/router';
+import { ContactoComponent } from './pages/contacto/contacto.component';
 
 @NgModule({
   declarations: [
     AcercaDeComponent,
-    InicioComponent
+    InicioComponent,
+    BarraLateralComponent,
+    ContactoComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     AcercaDeComponent,
+    BarraLateralComponent,
+    ContactoComponent,
     InicioComponent
   ]
 })

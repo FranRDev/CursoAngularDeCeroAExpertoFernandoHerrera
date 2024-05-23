@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InicioComponent } from './shared/pages/inicio/inicio.component';
+
 import { AcercaDeComponent } from './shared/pages/acerca-de/acerca-de.component';
+import { ContactoComponent } from './shared/pages/contacto/contacto.component';
+import { InicioComponent } from './shared/pages/inicio/inicio.component';
 
 const rutas: Routes = [
   {
-    path: 'inicio',
+    path: '',
     component: InicioComponent
   },
   {
@@ -13,8 +15,12 @@ const rutas: Routes = [
     component: AcercaDeComponent
   },
   {
+    path: 'contacto',
+    component: ContactoComponent
+  },
+  {
     path: '**',
-    redirectTo: 'inicio'
+    redirectTo: ''
   }
 ]
 
