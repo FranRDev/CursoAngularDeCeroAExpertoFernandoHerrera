@@ -7,13 +7,15 @@ import { PaginaPorPaisComponent } from './pages/por-pais/por-pais.component';
 import { PaginaPorRegionComponent } from './pages/por-region/por-region.component';
 import { PaisesRoutingModule } from './paises-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { TablaPaisesComponent } from './components/tabla/tabla.component';
 
 @NgModule({
   declarations: [
     PaginaPaisComponent,
     PaginaPorCapitalComponent,
     PaginaPorPaisComponent,
-    PaginaPorRegionComponent
+    PaginaPorRegionComponent,
+    TablaPaisesComponent
   ],
   imports: [
     CommonModule,

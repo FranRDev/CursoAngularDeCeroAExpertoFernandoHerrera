@@ -11,10 +11,6 @@
 
 <div class="row">
   <div class="col">
-    <ul>
-      <li *ngFor="let pais of paises">
-        {{pais.capital}} - {{pais.population}}
-      </li>
-    </ul>
+    <tabla-paises [paises]="paises"></tabla-paises>
   </div>
 </div>
