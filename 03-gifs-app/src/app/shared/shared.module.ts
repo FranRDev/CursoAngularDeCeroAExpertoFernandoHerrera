@@ -2,13 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BarraLateralComponent } from './components/barra-lateral/barra-lateral.component';
+import { ImagenPerezosaComponent } from './components/imagen-perezosa/imagen-perezosa.component';
 
 @NgModule({
   declarations: [
-    BarraLateralComponent
+    BarraLateralComponent,
+    ImagenPerezosaComponent
   ],
   exports: [
-    BarraLateralComponent
+    BarraLateralComponent,
+    ImagenPerezosaComponent
   ],
   imports: [
     CommonModule

@@ -1,14 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InicioComponent } from './pages/inicio/inicio.component';
+import { NgModule } from '@angular/core';
+
 import { BuscadorComponent } from './components/buscador/buscador.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
 import { ListaGifsComponent } from './components/lista/lista.component';
+import { SharedModule } from '../shared/shared.module';
 import { TarjetaGifComponent } from './components/tarjeta/tarjeta.component';
 
 @NgModule({
   declarations: [
-    InicioComponent,
     BuscadorComponent,
+    InicioComponent,
     ListaGifsComponent,
     TarjetaGifComponent
   ],
@@ -16,7 +18,8 @@ import { TarjetaGifComponent } from './components/tarjeta/tarjeta.component';
     InicioComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ]
 })
 export class GifsModule { }
