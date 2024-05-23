@@ -10,7 +10,7 @@ export class BarraLateralComponent {
 
   constructor(private servicioGifs: ServicioGifs) { }
 
-  get busquedas() {
+  get busquedas(): string[] {
     return this.servicioGifs.historialBusquedas;
   }
 
