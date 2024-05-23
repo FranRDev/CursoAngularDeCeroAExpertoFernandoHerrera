@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ServicioGifs } from '../../../gifs/services/gifs.service';
 
 @Component({
@@ -8,10 +8,14 @@ import { ServicioGifs } from '../../../gifs/services/gifs.service';
 })
 export class BarraLateralComponent {
 
-  constructor(private gifsService: ServicioGifs) { }
+  constructor(private servicioGifs: ServicioGifs) { }
 
   get busquedas() {
-    return this.gifsService.historialBusquedas;
+    return this.servicioGifs.historialBusquedas;
+  }
+
+  buscar(busqueda: string): void {
+    this.servicioGifs.buscar(busqueda);
   }
 
 }
