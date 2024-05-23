@@ -1,7 +1,5 @@
 <div class="text-center card mb-2 bg-dark">
-  <!-- <img [src]="gif.images.downsized_medium.url" [alt]="gif.title" class="card-img-top"> -->
-
-  <imagen-perezosa></imagen-perezosa>
+  <imagen-perezosa [url]="gif.images.downsized_medium.url" [alt]="gif.title || 'Sin nombre'"></imagen-perezosa>
 
   <div class="card-body text-white">
     <p class="card-text">
