@@ -6,11 +6,11 @@ import { PaginaContactoComponent } from './shared/pages/contacto/contacto.compon
 import { PaginaInicioComponent } from './shared/pages/inicio/inicio.component';
 
 const rutas: Routes = [
-  { path: '', component: PaginaInicioComponent },
+  // { path: '', component: PaginaInicioComponent },
   { path: 'acerca-de', component: PaginaAcercaDeComponent },
   { path: 'contacto', component: PaginaContactoComponent },
   { path: 'paises', loadChildren: () => import('./paises/paises.module').then( m => m.PaisesModule) },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'paises' }
 ]
 
 @NgModule({

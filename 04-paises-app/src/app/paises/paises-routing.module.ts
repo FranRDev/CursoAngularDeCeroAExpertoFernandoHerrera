@@ -11,6 +11,7 @@ const rutas: Routes = [
   { path: 'por-pais', component: PaginaPorPaisComponent },
   { path: 'por-region', component: PaginaPorRegionComponent },
   { path: 'por/:id', component: PaginaPaisComponent },
+  { path: '**', redirectTo: 'por-capital' }
 ]
 
 @NgModule({
