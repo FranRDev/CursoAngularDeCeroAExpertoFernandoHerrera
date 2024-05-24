@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Subject, debounceTime } from 'rxjs';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Subject, Subscription, debounceTime } from 'rxjs';
 
 @Component({
   selector: 'buscador',
   templateUrl: './buscador.component.html'
 })
-export class BuscadorComponent implements OnInit {
+export class BuscadorComponent implements OnInit, OnDestroy {
 
   @Input()
   public placeholder: string = '';
@@ -14,9 +14,14 @@ export class BuscadorComponent implements OnInit {
   public buscando = new EventEmitter<string>;
 
   private debouncer: Subject<string> = new Subject<string>();
+  private suscripcionDebouncer?: Subscription;
 
   ngOnInit(): void {
-    this.debouncer.pipe(debounceTime(300)).subscribe(valor => this.buscando.emit(valor))
+    this.suscripcionDebouncer = this.debouncer.pipe(debounceTime(300)).subscribe(valor => this.buscando.emit(valor))
+  }
+
+  ngOnDestroy(): void {
+    this.suscripcionDebouncer?.unsubscribe();
   }
 
   public teclaPulsada(busqueda: string) {
