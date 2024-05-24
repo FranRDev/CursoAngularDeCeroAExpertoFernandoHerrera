@@ -23,4 +23,8 @@ export class PaisesService {
     return this.clienteHttp.get<Pais[]>(`${this.urlBase}/region/${busqueda}`).pipe(catchError(_ => of([])));
   }
 
+  buscarPorCodigoAlfa(codigo: string): Observable<Pais[]> {
+    return this.clienteHttp.get<Pais[]>(`${this.urlBase}/alpha/${codigo}`).pipe(catchError(_ => of([])));
+  }
+
 }
