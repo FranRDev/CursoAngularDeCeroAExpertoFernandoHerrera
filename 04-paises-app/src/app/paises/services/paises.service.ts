@@ -16,18 +16,37 @@ export class PaisesService {
     porRegion: { region: '', paises: [] }
   }
 
-  constructor(private clienteHttp: HttpClient) { }
+  constructor(private clienteHttp: HttpClient) {
+    this.cargarDeAlmacenamientoLocal();
+  }
+
+  private guardarEnAlmacenamientoLocal() {
+    localStorage.setItem('cache', JSON.stringify(this.cache));
+  }
+
+  private cargarDeAlmacenamientoLocal() {
+    if (!localStorage.getItem('cache')) { return; }
+    this.cache = JSON.parse(localStorage.getItem('cache')!);
+  }
 
   private obtenerBusquedaPaises(url: string): Observable<Pais[]> {
     return this.clienteHttp.get<Pais[]>(url).pipe(catchError(_ => of([])));
   }
 
   buscarCapital(busqueda: string): Observable<Pais[]> {
-    return this.obtenerBusquedaPaises(`${this.urlBase}/capital/${busqueda}`).pipe(tap(paises => this.cache.porCapital = { busqueda, paises }));
+    return this.obtenerBusquedaPaises(`${this.urlBase}/capital/${busqueda}`)
+      .pipe(
+        tap(paises => this.cache.porCapital = { busqueda, paises }),
+        tap(() => this.guardarEnAlmacenamientoLocal())
+      );
   }
 
   buscarPais(busqueda: string): Observable<Pais[]> {
-    return this.obtenerBusquedaPaises(`${this.urlBase}/name/${busqueda}`).pipe(tap(paises => this.cache.porPais = { busqueda, paises }));
+    return this.obtenerBusquedaPaises(`${this.urlBase}/name/${busqueda}`)
+      .pipe(
+        tap(paises => this.cache.porPais = { busqueda, paises }),
+        tap(() => this.guardarEnAlmacenamientoLocal())
+      );
   }
 
   buscarPaisPorCodigoAlfa(codigo: string): Observable<Pais | null> {
@@ -38,7 +57,11 @@ export class PaisesService {
   }
 
   buscarRegion(region: Region): Observable<Pais[]> {
-    return this.obtenerBusquedaPaises(`${this.urlBase}/region/${region}`).pipe(tap(paises => this.cache.porRegion = { region, paises }));
+    return this.obtenerBusquedaPaises(`${this.urlBase}/region/${region}`)
+      .pipe(
+        tap(paises => this.cache.porRegion = { region, paises }),
+        tap(() => this.guardarEnAlmacenamientoLocal())
+      );
   }
 
 }
