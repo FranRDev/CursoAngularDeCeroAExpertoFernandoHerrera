@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { Pais } from '../../interfaces/paises.interface';
 import { PaisesService } from '../../services/paises.service';
 
+type Region = 'Africa' | 'Americas' | 'Asia' | 'Europe' | 'Oceania';
+
 @Component({
   selector: 'pagina-por-region',
   templateUrl: './por-region.component.html'
@@ -10,11 +12,14 @@ import { PaisesService } from '../../services/paises.service';
 export class PaginaPorRegionComponent {
 
   public paises: Pais[] = [];
+  public regiones: Region[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+  public regionSeleccionada?: Region;
 
   constructor(private servicioPaises: PaisesService) { }
 
-  buscarPorRegion(busqueda: string): void {
-    this.servicioPaises.buscarRegion(busqueda).subscribe(paises => this.paises = paises);
+  buscarPorRegion(region: Region): void {
+    this.regionSeleccionada = region;
+    this.servicioPaises.buscarRegion(region).subscribe(paises => this.paises = paises);
   }
 
 }
