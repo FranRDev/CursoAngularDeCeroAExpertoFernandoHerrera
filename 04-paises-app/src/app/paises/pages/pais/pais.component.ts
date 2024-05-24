@@ -3,12 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { switchMap } from 'rxjs';
 
 import { PaisesService } from '../../services/paises.service';
+import { Pais } from '../../interfaces/paises.interface';
 
 @Component({
   selector: 'pagina-pais',
   templateUrl: './pais.component.html'
 })
 export class PaginaPaisComponent implements OnInit {
+
+  public pais?: Pais;
 
   constructor(
     private enrutador: Router,
@@ -18,14 +21,10 @@ export class PaginaPaisComponent implements OnInit {
 
   ngOnInit(): void {
     this.rutaActiva.params
-      .pipe(switchMap(({id}) => this.servicioPaises.buscarPaisPorCodigoAlfa(id)))
+      .pipe(switchMap(({ id }) => this.servicioPaises.buscarPaisPorCodigoAlfa(id)))
       .subscribe(pais => {
-        if (!pais) {
-          return this.enrutador.navigateByUrl('');
-        }
-
-        console.log('Tenemos un país');
-        return;
+        if (!pais) { return this.enrutador.navigateByUrl(''); }
+        return this.pais = pais;
       });
   }
 
