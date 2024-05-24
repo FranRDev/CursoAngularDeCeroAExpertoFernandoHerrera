@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, of } from 'rxjs';
+import { Observable, catchError, delay, map, of } from 'rxjs';
 
 import { Pais } from '../interfaces/paises.interface';
 
@@ -11,12 +11,16 @@ export class PaisesService {
 
   constructor(private clienteHttp: HttpClient) { }
 
+  private obtenerBusquedaPaises(url: string): Observable<Pais[]> {
+    return this.clienteHttp.get<Pais[]>(url).pipe(catchError(_ => of([])), delay(2000));
+  }
+
   buscarCapital(busqueda: string): Observable<Pais[]> {
-    return this.clienteHttp.get<Pais[]>(`${this.urlBase}/capital/${busqueda}`).pipe(catchError(_ => of([])));
+    return this.obtenerBusquedaPaises(`${this.urlBase}/capital/${busqueda}`);
   }
 
   buscarPais(busqueda: string): Observable<Pais[]> {
-    return this.clienteHttp.get<Pais[]>(`${this.urlBase}/name/${busqueda}`).pipe(catchError(_ => of([])));
+    return this.obtenerBusquedaPaises(`${this.urlBase}/name/${busqueda}`);
   }
 
   buscarPaisPorCodigoAlfa(codigo: string): Observable<Pais | null> {
@@ -27,7 +31,7 @@ export class PaisesService {
   }
 
   buscarRegion(busqueda: string): Observable<Pais[]> {
-    return this.clienteHttp.get<Pais[]>(`${this.urlBase}/region/${busqueda}`).pipe(catchError(_ => of([])));
+    return this.obtenerBusquedaPaises(`${this.urlBase}/region/${busqueda}`);
   }
 
 }
