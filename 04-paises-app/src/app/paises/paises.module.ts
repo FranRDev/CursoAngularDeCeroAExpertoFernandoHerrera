@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { PaginaPaisComponent } from './pages/pais/pais.component';
 import { PaginaPorCapitalComponent } from './pages/por-capital/por-capital.component';
@@ -20,6 +21,7 @@ import { TablaPaisesComponent } from './components/tabla/tabla.component';
   imports: [
     CommonModule,
     PaisesRoutingModule,
+    RouterModule,
     SharedModule
   ]
 })
