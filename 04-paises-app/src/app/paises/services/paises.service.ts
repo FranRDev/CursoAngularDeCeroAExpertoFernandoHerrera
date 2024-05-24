@@ -12,7 +12,7 @@ export class PaisesService {
   constructor(private clienteHttp: HttpClient) { }
 
   private obtenerBusquedaPaises(url: string): Observable<Pais[]> {
-    return this.clienteHttp.get<Pais[]>(url).pipe(catchError(_ => of([])), delay(2000));
+    return this.clienteHttp.get<Pais[]>(url).pipe(catchError(_ => of([])));
   }
 
   buscarCapital(busqueda: string): Observable<Pais[]> {
