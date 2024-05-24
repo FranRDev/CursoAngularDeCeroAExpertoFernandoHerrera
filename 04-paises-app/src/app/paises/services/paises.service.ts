@@ -1,13 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, delay, map, of } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 
-import { Pais } from '../interfaces/paises.interface';
+import { Cache, Pais } from '../interfaces/paises.interface';
 
 @Injectable({providedIn: 'root'})
 export class PaisesService {
 
   private urlBase: string = 'https://restcountries.com/v3.1';
+
+  public cache : Cache = {
+    porCapital: { busqueda: '', paises: []},
+    porPais: { busqueda: '', paises: []},
+    porRegion: { region: '', paises: []}
+  }
 
   constructor(private clienteHttp: HttpClient) { }
 

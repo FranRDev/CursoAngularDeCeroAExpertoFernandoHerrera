@@ -119,3 +119,19 @@ export interface PostalCode {
   format: string;
   regex: string;
 }
+
+export interface Cache {
+  porCapital: BusquedaPaises,
+  porPais: BusquedaPaises,
+  porRegion: BusquedaPaisesRegion
+}
+
+export interface BusquedaPaises {
+  busqueda: string,
+  paises: Pais[];
+}
+
+export interface BusquedaPaisesRegion {
+  region: Region,
+  paises: Pais[];
+}

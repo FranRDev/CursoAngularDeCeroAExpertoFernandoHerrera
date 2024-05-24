@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 import { Pais } from '../../interfaces/paises.interface';
 import { PaisesService } from '../../services/paises.service';
 
-type Region = 'Africa' | 'Americas' | 'Asia' | 'Europe' | 'Oceania';
-
 @Component({
   selector: 'pagina-por-region',
   templateUrl: './por-region.component.html'
