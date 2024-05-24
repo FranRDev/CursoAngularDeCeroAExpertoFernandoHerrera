@@ -15,4 +15,12 @@ export class PaisesService {
     return this.clienteHttp.get<Pais[]>(`${this.urlBase}/capital/${busqueda}`).pipe(catchError(_ => of([])));
   }
 
+  buscarPais(busqueda: string): Observable<Pais[]> {
+    return this.clienteHttp.get<Pais[]>(`${this.urlBase}/name/${busqueda}`).pipe(catchError(_ => of([])));
+  }
+
+  buscarRegion(busqueda: string): Observable<Pais[]> {
+    return this.clienteHttp.get<Pais[]>(`${this.urlBase}/region/${busqueda}`).pipe(catchError(_ => of([])));
+  }
+
 }

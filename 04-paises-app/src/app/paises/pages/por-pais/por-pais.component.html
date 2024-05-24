@@ -1,1 +1,16 @@
-<p>por-pais works!</p>
+<h2>Por país</h2>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <buscador placeholder="Escribe el país..." (buscando)="buscarPorPais($event)"></buscador>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col">
+    <tabla-paises [paises]="paises"></tabla-paises>
+  </div>
+</div>
