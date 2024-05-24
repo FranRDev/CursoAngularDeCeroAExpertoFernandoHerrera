@@ -1,3 +1,5 @@
+import { Region } from "./paises.type";
+
 export interface Pais {
   name: Name;
   tld: string[];

@@ -10,6 +10,9 @@ export class BuscadorComponent implements OnInit, OnDestroy {
   @Input()
   public placeholder: string = '';
 
+  @Input()
+  public valorInicial: string = '';
+
   @Output()
   public buscando = new EventEmitter<string>;
 
