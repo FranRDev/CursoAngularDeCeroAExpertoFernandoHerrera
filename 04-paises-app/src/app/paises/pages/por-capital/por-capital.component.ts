@@ -10,11 +10,18 @@ import { Pais } from '../../interfaces/paises.interface';
 export class PaginaPorCapitalComponent {
 
   public paises: Pais[] = [];
+  public cargando: boolean = false;
 
   constructor(private servicioPaises: PaisesService) { }
 
   buscarPorCapital(busqueda: string): void {
-    this.servicioPaises.buscarCapital(busqueda).subscribe(paises => this.paises = paises);
+    this.cargando = true;
+
+    this.servicioPaises.buscarCapital(busqueda)
+      .subscribe(paises => {
+        this.paises = paises;
+        this.cargando = false;
+      });
   }
 
 }
