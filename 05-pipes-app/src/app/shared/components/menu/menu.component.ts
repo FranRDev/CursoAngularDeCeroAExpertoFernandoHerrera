@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 @Component({
-  selector: 'menu',
+  selector: 'shared-menu',
   templateUrl: './menu.component.html',
   styles: ``
 })
