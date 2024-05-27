@@ -1,10 +1,10 @@
 <p-panel header="Pipes personalizados" class="p-1">
-  <p>Pipes personalizados - Creados por {{ 'nosotros' | toggleCase:true }}</p>
+  <p>Pipes personalizados - Creados por {{ 'nosotros' | toggleCase:esMayusculas }}</p>
 </p-panel>
 
 <p-toolbar>
   <div class="p-toolbar-group-start">
-    <p-button label="ToggleCase" icon="pi pi-search" class="mr-2" />
+    <p-button label="ToggleCase" icon="pi pi-search" class="mr-2" (click)="conmutarMayusculas()" />
   </div>
 
   <div class="p-toolbar-group-end">

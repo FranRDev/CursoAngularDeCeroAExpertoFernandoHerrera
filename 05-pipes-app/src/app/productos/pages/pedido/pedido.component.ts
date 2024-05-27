@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class PaginaPedidoComponent {
 
+  public esMayusculas: boolean = false;
+
+  public conmutarMayusculas(): void {
+    this.esMayusculas = !this.esMayusculas;
+  }
+
 }
