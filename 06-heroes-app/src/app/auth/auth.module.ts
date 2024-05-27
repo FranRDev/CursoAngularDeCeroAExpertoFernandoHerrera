@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { PaginaLayoutComponent } from './pages/layout/layout.component';
-import { InicioSesionComponent } from './pages/inicio-sesion/inicio-sesion.component';
-import { RegistroComponent } from './pages/registro/registro.component';
+import { PaginaInicioSesionComponent } from './pages/inicio-sesion/inicio-sesion.component';
+import { PaginaRegistroComponent } from './pages/registro/registro.component';
 
 @NgModule({
   declarations: [
     PaginaLayoutComponent,
-    InicioSesionComponent,
-    RegistroComponent
+    PaginaInicioSesionComponent,
+    PaginaRegistroComponent
   ],
   imports: [
     AuthRoutingModule,
