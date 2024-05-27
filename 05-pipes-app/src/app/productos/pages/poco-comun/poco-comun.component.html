@@ -5,7 +5,8 @@
 <div class="grid">
   <div class="col-12 md:col-6">
     <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
-
+      <p>Saludos {{nombre}}, es un placer {{ genero | i18nSelect:mapaInvitacion}} a nuestro evento.</p>
+      <p-button (onClick)="cambiarCliente()" label="Cambiar persona"></p-button>
     </p-fieldset>
   </div>
 

@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class PaginaPocoComunComponent {
 
+  // i18n Select
+  public nombre: string = 'Fernando';
+  public genero: 'masculino' | 'femenino' = 'masculino';
+  public mapaInvitacion = {
+    masculino: 'invitarlo',
+    femenino: 'invitarla'
+  }
+
+  public cambiarCliente(): void {
+    this.nombre = 'Raquel';
+    this.genero = 'femenino';
+  }
+
 }
