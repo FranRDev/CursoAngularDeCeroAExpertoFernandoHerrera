@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable, interval, tap } from 'rxjs';
 
 @Component({
   selector: 'pagina-poco-comun',
@@ -38,5 +39,18 @@ export class PaginaPocoComunComponent {
     edad: 28,
     direccion: 'Sevilla, España'
   }
+
+  // Async
+  public temporizadorObservable: Observable<number> = interval(2000).pipe(tap(valor => console.log('tap:', valor)));
+
+  public valorPromesa: Promise<string> = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Tenemos datos en la promesa');
+      console.log('Tenemos datos en la promesa');
+      this.persona.nombre = 'Otro nombre';
+    }, 3500);
+  }
+
+  )
 
 }
