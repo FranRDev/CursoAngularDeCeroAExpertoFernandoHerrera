@@ -1,1 +1,25 @@
-<p>basica works!</p>
+<p-panel [showHeader]="false">
+  <h1>Pipes básicos</h1>
+
+  <p>Pipes incluidos en Angular - Usualmente en el Common Module</p>
+</p-panel>
+
+<div class="p-grid">
+  <div class="p-col-4">
+    <p-card header="uppercase">
+      {{ nombreMinusculas | uppercase }}
+    </p-card>
+  </div>
+
+  <div class="p-col-4">
+    <p-card header="lowercase">
+      {{ nombreMinusculas | lowercase }}
+    </p-card>
+  </div>
+
+  <div class="p-col-4">
+    <p-card header="titlecase">
+      {{ nombreCompleto | titlecase }}
+    </p-card>
+  </div>
+</div>

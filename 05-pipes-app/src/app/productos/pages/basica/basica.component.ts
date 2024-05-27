@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class PaginaBasicaComponent {
 
+  public nombreMinusculas: string = 'francisco';
+  public nombreMayusculas: string = 'FRANCISCO';
+  public nombreCompleto: string = 'fRanCiscO roDríguEZ'
+
 }

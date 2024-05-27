@@ -5,6 +5,7 @@ import { ProductosRoutingModule } from './productos-routing.module';
 import { PaginaBasicaComponent } from './pages/basica/basica.component';
 import { PaginaNumerosComponent } from './pages/numeros/numeros.component';
 import { PaginaPocoComunComponent } from './pages/poco-comun/poco-comun.component';
+import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { PaginaPocoComunComponent } from './pages/poco-comun/poco-comun.componen
   ],
   imports: [
     CommonModule,
-    ProductosRoutingModule
+    ProductosRoutingModule,
+    PrimeNgModule
   ]
 })
 export class ProductosModule { }
