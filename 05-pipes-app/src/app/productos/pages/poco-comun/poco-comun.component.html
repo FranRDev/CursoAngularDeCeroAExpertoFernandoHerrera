@@ -6,13 +6,14 @@
   <div class="col-12 md:col-6">
     <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
       <p>Saludos {{nombre}}, es un placer {{ genero | i18nSelect:mapaInvitacion}} a nuestro evento.</p>
-      <p-button (onClick)="cambiarCliente()" label="Cambiar persona"></p-button>
+      <p-button (click)="cambiarCliente()" label="Cambiar persona"></p-button>
     </p-fieldset>
   </div>
 
   <div class="col-12 md:col-6">
     <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
-
+      <p>Actualmente {{ clientes.length | i18nPlural:mapaClientes }}.</p>
+      <p-button label="Borrar cliente" (click)="borrarCliente()"></p-button>
     </p-fieldset>
   </div>
 

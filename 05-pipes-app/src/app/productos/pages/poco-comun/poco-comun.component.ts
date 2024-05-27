@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class PaginaPocoComunComponent {
 
-  // i18n Select
+  // i18nSelect
   public nombre: string = 'Fernando';
   public genero: 'masculino' | 'femenino' = 'masculino';
   public mapaInvitacion = {
@@ -18,6 +18,18 @@ export class PaginaPocoComunComponent {
   public cambiarCliente(): void {
     this.nombre = 'Raquel';
     this.genero = 'femenino';
+  }
+
+  // i18Plural
+  public clientes: string[] = ['María', 'Pedro', 'Francisco', 'Hernando', 'Eduardo', 'Raquel', 'Natalia'];
+  public mapaClientes = {
+    '=0': 'no tenemos ningún cliente esperando',
+    '=1': 'tenemos un cliente esperando',
+    'other': 'tenemos # clientes esperando'
+  }
+
+  public borrarCliente(): void {
+    this.clientes.shift();
   }
 
 }
