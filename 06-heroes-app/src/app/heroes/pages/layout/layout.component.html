@@ -1,5 +1,34 @@
-<h1>Héroes Layout</h1>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{ width: '250px' }">
+    <mat-toolbar>
+      <span>Menú</span>
+      <span class="espaciador"></span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
 
-<router-outlet></router-outlet>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let elemento of elementosMenu" [routerLink]="elemento.url" (click)="sidenav.toggle()">
+        <mat-icon matListItemIcon>{{ elemento.icono }}</mat-icon>
+        {{ elemento.etiqueta }}
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
 
-<h5>Pie</h5>
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="espaciador"></span>
+    <button mat-button>
+      Cerrar sesión
+    </button>
+  </mat-toolbar>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>
+
