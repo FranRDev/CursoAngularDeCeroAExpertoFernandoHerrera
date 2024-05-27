@@ -10,5 +10,6 @@ export class PaginaBasicaComponent {
   public nombreMinusculas: string = 'francisco';
   public nombreMayusculas: string = 'FRANCISCO';
   public nombreCompleto: string = 'fRanCiscO roDríguEZ'
+  public fecha: Date = new Date();
 
 }
