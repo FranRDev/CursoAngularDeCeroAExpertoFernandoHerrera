@@ -8,16 +8,16 @@
   </div>
 
   <div class="p-toolbar-group-end">
-    <p-button label="Por nombre" icon="pi pi-sort" class="mr-2" styleClass="p-button-success" />
-    <p-button label="Por volar" icon="pi pi-sort" class="mr-2" styleClass="p-button-danger" />
-    <p-button label="Por color" icon="pi pi-sort" styleClass="p-button-help" />
+    <p-button (click)="cambiarOrden('nombre')" label="Por nombre" icon="pi pi-sort" class="mr-2" styleClass="p-button-success" />
+    <p-button (click)="cambiarOrden('puedeVolar')" label="Por volar" icon="pi pi-sort" class="mr-2" styleClass="p-button-danger" />
+    <p-button (click)="cambiarOrden('color')" label="Por color" icon="pi pi-sort" styleClass="p-button-help" />
   </div>
 </p-toolbar>
 
 <div class="grid">
   <div class="col mt-2">
     <p-panel header="Héroes">
-      <p-table [value]="heroes | ordenarPor:'puedeVolar'" [tableStyle]="{ 'min-width': '50rem' }">
+      <p-table [value]="heroes | ordenarPor:ordenarPor" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
           <tr>
             <th>Nombre</th>

@@ -9,6 +9,7 @@ import { Color, Heroe } from '../../interfaces/heroe.interface';
 export class PaginaPedidoComponent {
 
   public esMayusculas: boolean = false;
+  public ordenarPor?: keyof Heroe;
 
   public heroes: Heroe[] = [
     { nombre: 'Superman', puedeVolar: true, color: Color.azul },
@@ -20,6 +21,10 @@ export class PaginaPedidoComponent {
 
   public conmutarMayusculas(): void {
     this.esMayusculas = !this.esMayusculas;
+  }
+
+  public cambiarOrden(valor: keyof Heroe): void {
+    this.ordenarPor = valor;
   }
 
 }
