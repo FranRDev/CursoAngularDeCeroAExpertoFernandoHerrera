@@ -7,6 +7,7 @@ import { PaginaNumerosComponent } from './pages/numeros/numeros.component';
 import { PaginaPocoComunComponent } from './pages/poco-comun/poco-comun.component';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 import { PaginaPedidoComponent } from './pages/pedido/pedido.component';
+import { ToggleCasePipe } from './pipes/toggle-case.pipe';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { PaginaPedidoComponent } from './pages/pedido/pedido.component';
     PaginaBasicaComponent,
     PaginaNumerosComponent,
     PaginaPocoComunComponent,
-    PaginaPedidoComponent
+    PaginaPedidoComponent,
+    ToggleCasePipe
   ],
   imports: [
     CommonModule,
