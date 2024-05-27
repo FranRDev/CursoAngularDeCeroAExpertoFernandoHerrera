@@ -1,12 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { ProductosRoutingModule } from './productos-routing.module';
 import { PaginaBasicaComponent } from './pages/basica/basica.component';
 import { PaginaNumerosComponent } from './pages/numeros/numeros.component';
+import { PaginaPedidoComponent } from './pages/pedido/pedido.component';
 import { PaginaPocoComunComponent } from './pages/poco-comun/poco-comun.component';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
-import { PaginaPedidoComponent } from './pages/pedido/pedido.component';
+import { ProductosRoutingModule } from './productos-routing.module';
+import { PuedeVolarPipe } from './pipes/puede-volar.pipe';
 import { ToggleCasePipe } from './pipes/toggle-case.pipe';
 
 
@@ -14,14 +15,15 @@ import { ToggleCasePipe } from './pipes/toggle-case.pipe';
   declarations: [
     PaginaBasicaComponent,
     PaginaNumerosComponent,
-    PaginaPocoComunComponent,
     PaginaPedidoComponent,
+    PaginaPocoComunComponent,
+    PuedeVolarPipe,
     ToggleCasePipe
   ],
   imports: [
     CommonModule,
-    ProductosRoutingModule,
-    PrimeNgModule
+    PrimeNgModule,
+    ProductosRoutingModule
   ]
 })
 export class ProductosModule { }

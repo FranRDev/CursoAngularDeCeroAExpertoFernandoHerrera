@@ -14,7 +14,6 @@
   </div>
 </p-toolbar>
 
-
 <div class="grid">
   <div class="col mt-2">
     <p-panel header="Héroes">
@@ -29,7 +28,7 @@
         <ng-template pTemplate="body" let-heroe>
           <tr>
             <td>{{ heroe.nombre }}</td>
-            <td>{{ heroe.puedeVolar }}</td>
+            <td>{{ heroe.puedeVolar | puedeVolar }}</td>
             <td>{{ heroe.color }}</td>
           </tr>
         </ng-template>
