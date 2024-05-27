@@ -32,4 +32,11 @@ export class PaginaPocoComunComponent {
     this.clientes.shift();
   }
 
+  // KeyValue
+  public persona = {
+    nombre: 'Francisco',
+    edad: 28,
+    direccion: 'Sevilla, España'
+  }
+
 }
