@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { OrdenarPorPipe } from './pipes/ordenar-por.pipe';
 import { PaginaBasicaComponent } from './pages/basica/basica.component';
 import { PaginaNumerosComponent } from './pages/numeros/numeros.component';
 import { PaginaPedidoComponent } from './pages/pedido/pedido.component';
@@ -13,6 +14,7 @@ import { ToggleCasePipe } from './pipes/toggle-case.pipe';
 
 @NgModule({
   declarations: [
+    OrdenarPorPipe,
     PaginaBasicaComponent,
     PaginaNumerosComponent,
     PaginaPedidoComponent,
