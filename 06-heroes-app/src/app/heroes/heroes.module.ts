@@ -8,6 +8,7 @@ import { PaginaBusquedaComponent } from './pages/busqueda/busqueda.component';
 import { PaginaHeroeComponent } from './pages/heroe/heroe.component';
 import { PaginaLayoutComponent } from './pages/layout/layout.component';
 import { PaginaListaComponent } from './pages/lista/lista.component';
+import { TarjetaHeroeComponent } from './components/tarjeta-heroe/tarjeta-heroe.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PaginaListaComponent } from './pages/lista/lista.component';
     PaginaBusquedaComponent,
     PaginaHeroeComponent,
     PaginaLayoutComponent,
-    PaginaListaComponent
+    PaginaListaComponent,
+    TarjetaHeroeComponent
   ],
   imports: [
     CommonModule,
