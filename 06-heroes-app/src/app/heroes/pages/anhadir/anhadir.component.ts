@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class PaginaAnhadirComponent {
 
+  public publicadores = [
+    { id: 'DC Comics', desc: 'DC - Comics'},
+    { id: 'Marvel Comics', desc: 'Marvel - Comics'}
+  ];
+
 }
