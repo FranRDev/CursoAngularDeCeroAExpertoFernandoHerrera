@@ -20,10 +20,11 @@
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
+
     <span class="espaciador"></span>
-    <button mat-button>
-      Cerrar sesión
-    </button>
+    <span>{{ usuario?.email }}</span>
+
+    <button mat-button (click)="cerrarSesion()">Cerrar sesión</button>
   </mat-toolbar>
 
   <div class="container p-2">
@@ -31,4 +32,3 @@
   </div>
 
 </mat-sidenav-container>
-
