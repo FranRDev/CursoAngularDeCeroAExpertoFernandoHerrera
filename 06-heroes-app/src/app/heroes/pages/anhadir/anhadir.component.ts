@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { switchMap } from 'rxjs';
+import { filter, switchMap } from 'rxjs';
 
 import { Heroe, Publisher } from '../../interfaces/heroe.interface';
 import { HeroesService } from '../../services/heroes.service';
@@ -72,11 +72,12 @@ export class PaginaAnhadirComponent implements OnInit {
     const dialogo = this.dialogo.open(DialogoConfimacionComponent, { data: this.heroeActual });
 
     dialogo.afterClosed()
-      .subscribe(resultado => {
-        if (!resultado) { return; }
-        this.servicioHeroes.eliminarHeroePorId(this.heroeActual.id);
-        this.enrutador.navigate(['/heroes'])
-      });
+      .pipe(
+        filter((resultado: boolean) => resultado),
+        switchMap(() => this.servicioHeroes.eliminarHeroePorId(this.heroeActual.id)),
+        filter((eliminado: boolean) => eliminado)
+      )
+      .subscribe(() => this.enrutador.navigate(['/heroes']))
   }
 
   mostrarSnackbar(mensaje: string): void {
