@@ -34,6 +34,12 @@ export class PaginaAnhadirComponent {
   enviarFormulario(): void {
     if (this.formularioHeroe.invalid) { return; }
 
+    if (this.heroeActual.id) {
+      this.servicioHeroes.actualizarHeroe(this.heroeActual).subscribe(heroe => {}); // TODO: Mostrar snakbar
+
+    } else {
+      this.servicioHeroes.anhadirHeroe(this.heroeActual).subscribe(heroe => {}); // TODO: ...
+    }
   }
 
 }
