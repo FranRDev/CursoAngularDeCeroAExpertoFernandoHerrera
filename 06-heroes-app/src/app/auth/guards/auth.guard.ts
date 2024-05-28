@@ -1,21 +1,31 @@
-import { ActivatedRouteSnapshot, CanActivate, CanMatch, GuardResult, MaybeAsync, Route, RouterStateSnapshot, UrlSegment } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanMatch, GuardResult, MaybeAsync, Route, Router, RouterStateSnapshot, UrlSegment } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { Observable, tap } from 'rxjs';
+
+import { AuthService } from '../services/auth.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthGuard implements CanMatch, CanActivate {
 
-  constructor() { }
+  constructor(
+    private servicioAutenticacion: AuthService,
+    private enrutador: Router
+  ) { }
+
+  private comprobarAutenticacion(): Observable<boolean> {
+    return this.servicioAutenticacion.comprobarAutenticacion().pipe(
+      tap(autenticado => {
+        if(!autenticado) { this.enrutador.navigate(['./auth/inicio-sesion'])}
+      })
+    );
+  }
 
   canMatch(route: Route, segments: UrlSegment[]): MaybeAsync<GuardResult> {
-    console.log('Can Match');
-    console.log({route, segments});
-    return false;
+    return this.comprobarAutenticacion();
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
-    console.log('Can Activate');
-    console.log({route, state});
-    return false;
+    return this.comprobarAutenticacion();
   }
 
 }
