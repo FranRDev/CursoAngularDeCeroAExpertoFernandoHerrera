@@ -22,7 +22,7 @@ export class HeroesService {
   }
 
   public obtenerSugerencias(busqueda: string): Observable<Heroe[]> {
-    return this.clienteHttp.get<Heroe[]>(`/heroes?q=${busqueda}&_limit=6`);
+    return this.clienteHttp.get<Heroe[]>(`${this.urlBase}/heroes?q=${busqueda}&_limit=6`);
   }
 
 }
