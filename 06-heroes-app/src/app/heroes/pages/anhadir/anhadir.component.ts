@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Publisher } from '../../interfaces/heroe.interface';
+import { Heroe, Publisher } from '../../interfaces/heroe.interface';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'pagina-anhadir',
@@ -23,11 +24,16 @@ export class PaginaAnhadirComponent {
     { id: 'Marvel Comics', desc: 'Marvel - Comics'}
   ];
 
+  constructor(private servicioHeroes: HeroesService) { }
+
+  get heroeActual(): Heroe {
+    const heroe = this.formularioHeroe.value as Heroe;
+    return heroe;
+  }
+
   enviarFormulario(): void {
-    console.log({
-      esValido: this.formularioHeroe.valid,
-      valor: this.formularioHeroe.value
-    });
+    if (this.formularioHeroe.invalid) { return; }
+
   }
 
 }
