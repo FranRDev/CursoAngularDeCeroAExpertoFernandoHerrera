@@ -46,7 +46,7 @@
         </form>
 
         <div class="flex justify-content-between">
-          <button mat-flat-button color="warn" *ngIf="heroeActual.id">Borrar</button>
+          <button mat-flat-button color="warn" *ngIf="heroeActual.id" (click)="eliminarHeroe()">Borrar</button>
           <span></span>
           <button mat-flat-button color="primary" (click)="enviarFormulario()">
             <mat-icon>save</mat-icon>

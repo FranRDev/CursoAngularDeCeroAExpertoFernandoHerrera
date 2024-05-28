@@ -1,11 +1,13 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { switchMap } from 'rxjs';
 
 import { Heroe, Publisher } from '../../interfaces/heroe.interface';
 import { HeroesService } from '../../services/heroes.service';
+import { DialogoConfimacionComponent } from '../../components/dialogo-confimacion/dialogo-confimacion.component';
 
 @Component({ selector: 'pagina-anhadir', templateUrl: './anhadir.component.html' })
 export class PaginaAnhadirComponent implements OnInit {
@@ -26,9 +28,10 @@ export class PaginaAnhadirComponent implements OnInit {
   ];
 
   constructor(
-    private servicioHeroes: HeroesService,
-    private rutaActiva: ActivatedRoute,
+    private dialogo: MatDialog,
     private enrutador: Router,
+    private rutaActiva: ActivatedRoute,
+    private servicioHeroes: HeroesService,
     private snackbar: MatSnackBar
   ) { }
 
@@ -62,6 +65,18 @@ export class PaginaAnhadirComponent implements OnInit {
           this.mostrarSnackbar(`${heroe.superhero} añadido`);
         });
     }
+  }
+
+  eliminarHeroe(): void {
+    if (!this.heroeActual.id) { throw Error('ID es requerido'); }
+    const dialogo = this.dialogo.open(DialogoConfimacionComponent, { data: this.heroeActual });
+
+    dialogo.afterClosed()
+      .subscribe(resultado => {
+        if (!resultado) { return; }
+        this.servicioHeroes.eliminarHeroePorId(this.heroeActual.id);
+        this.enrutador.navigate(['/heroes'])
+      });
   }
 
   mostrarSnackbar(mensaje: string): void {

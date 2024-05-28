@@ -11,6 +11,7 @@ import { PaginaHeroeComponent } from './pages/heroe/heroe.component';
 import { PaginaLayoutComponent } from './pages/layout/layout.component';
 import { PaginaListaComponent } from './pages/lista/lista.component';
 import { TarjetaHeroeComponent } from './components/tarjeta-heroe/tarjeta-heroe.component';
+import { DialogoConfimacionComponent } from './components/dialogo-confimacion/dialogo-confimacion.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TarjetaHeroeComponent } from './components/tarjeta-heroe/tarjeta-heroe.
     PaginaHeroeComponent,
     PaginaLayoutComponent,
     PaginaListaComponent,
-    TarjetaHeroeComponent
+    TarjetaHeroeComponent,
+    DialogoConfimacionComponent
   ],
   imports: [
     CommonModule,

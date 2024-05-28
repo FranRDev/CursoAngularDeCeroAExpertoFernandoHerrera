@@ -34,9 +34,8 @@ export class HeroesService {
     return this.clienteHttp.patch<Heroe>(`${this.urlBase}/heroes/${heroe.id}`, heroe);
   }
 
-  public eliminarHeroe(heroe: Heroe): Observable<boolean> {
-    if (!heroe.id) { throw Error('ID es requerido'); }
-    return this.clienteHttp.delete<Heroe>(`${this.urlBase}/heroes/${heroe.id}`).pipe(catchError(_ => of(false)), map(_ => true));
+  public eliminarHeroePorId(id: string): Observable<boolean> {
+    return this.clienteHttp.delete<Heroe>(`${this.urlBase}/heroes/${id}`).pipe(catchError(_ => of(false)), map(_ => true));
   }
 
 }
