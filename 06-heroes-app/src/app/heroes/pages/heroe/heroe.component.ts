@@ -31,4 +31,8 @@ export class PaginaHeroeComponent implements OnInit {
       });
   }
 
+  public volver(): void {
+    this.enrutador.navigateByUrl('heroes/lista');
+  }
+
 }
