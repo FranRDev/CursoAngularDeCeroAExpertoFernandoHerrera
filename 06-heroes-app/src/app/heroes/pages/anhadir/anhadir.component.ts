@@ -1,17 +1,16 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Heroe, Publisher } from '../../interfaces/heroe.interface';
-import { HeroesService } from '../../services/heroes.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { switchMap } from 'rxjs';
 
-@Component({
-  selector: 'pagina-anhadir',
-  templateUrl: './anhadir.component.html'
-})
+import { Heroe, Publisher } from '../../interfaces/heroe.interface';
+import { HeroesService } from '../../services/heroes.service';
+
+@Component({ selector: 'pagina-anhadir', templateUrl: './anhadir.component.html' })
 export class PaginaAnhadirComponent implements OnInit {
 
-  public formularioHeroe = new FormGroup({
+  formularioHeroe = new FormGroup({
     id: new FormControl<string>(''),
     superhero: new FormControl<string>('', { nonNullable: true }),
     publisher: new FormControl<Publisher>(Publisher.DCComics),
@@ -21,7 +20,7 @@ export class PaginaAnhadirComponent implements OnInit {
     alt_img: new FormControl<string>('')
   });
 
-  public publicadores = [
+  publicadores = [
     { id: 'DC Comics', desc: 'DC - Comics' },
     { id: 'Marvel Comics', desc: 'Marvel - Comics' }
   ];
@@ -29,7 +28,8 @@ export class PaginaAnhadirComponent implements OnInit {
   constructor(
     private servicioHeroes: HeroesService,
     private rutaActiva: ActivatedRoute,
-    private enrutador: Router
+    private enrutador: Router,
+    private snackbar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -53,11 +53,19 @@ export class PaginaAnhadirComponent implements OnInit {
     if (this.formularioHeroe.invalid) { return; }
 
     if (this.heroeActual.id) {
-      this.servicioHeroes.actualizarHeroe(this.heroeActual).subscribe(heroe => { }); // TODO: Mostrar snakbar
+      this.servicioHeroes.actualizarHeroe(this.heroeActual).subscribe(heroe => this.mostrarSnackbar(`${heroe.superhero} actualizado`));
 
     } else {
-      this.servicioHeroes.anhadirHeroe(this.heroeActual).subscribe(heroe => { }); // TODO: ...
+      this.servicioHeroes.anhadirHeroe(this.heroeActual)
+        .subscribe(heroe => {
+          this.enrutador.navigate(['/heroes/editar', heroe.id]);
+          this.mostrarSnackbar(`${heroe.superhero} añadido`);
+        });
     }
+  }
+
+  mostrarSnackbar(mensaje: string): void {
+    this.snackbar.open(mensaje, 'OK', { duration: 2500 });
   }
 
 }
