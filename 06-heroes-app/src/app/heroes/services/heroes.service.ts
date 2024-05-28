@@ -21,4 +21,8 @@ export class HeroesService {
     return this.clienteHttp.get<Heroe>(`${this.urlBase}/heroes/${id}`).pipe(catchError(_ => of(undefined)));
   }
 
+  public obtenerSugerencias(busqueda: string): Observable<Heroe[]> {
+    return this.clienteHttp.get<Heroe[]>(`/heroes?q=${busqueda}&_limit=6`);
+  }
+
 }
