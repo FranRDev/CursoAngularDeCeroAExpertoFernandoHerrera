@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { HeroesRoutingModule } from './heroes-routing.module';
+import { ImagenHeroePipe } from './pipes/imagen-heroe.pipe';
 import { MaterialModule } from '../material/material.module';
 import { PaginaAnhadirComponent } from './pages/anhadir/anhadir.component';
 import { PaginaBusquedaComponent } from './pages/busqueda/busqueda.component';
@@ -12,6 +13,7 @@ import { TarjetaHeroeComponent } from './components/tarjeta-heroe/tarjeta-heroe.
 
 @NgModule({
   declarations: [
+    ImagenHeroePipe,
     PaginaAnhadirComponent,
     PaginaBusquedaComponent,
     PaginaHeroeComponent,
