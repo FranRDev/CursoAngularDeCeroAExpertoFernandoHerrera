@@ -23,4 +23,11 @@ export class PaginaAnhadirComponent {
     { id: 'Marvel Comics', desc: 'Marvel - Comics'}
   ];
 
+  enviarFormulario(): void {
+    console.log({
+      esValido: this.formularioHeroe.valid,
+      valor: this.formularioHeroe.value
+    });
+  }
+
 }
