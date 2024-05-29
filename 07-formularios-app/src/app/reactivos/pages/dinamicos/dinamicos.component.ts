@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({ templateUrl: './dinamicos.component.html' })
 export class PaginaDinamicosComponent {
@@ -11,6 +11,8 @@ export class PaginaDinamicosComponent {
       ['Pacman', Validators.required]
     ])
   });
+
+  public nuevoFavorito: FormControl = new FormControl('', Validators.required);
 
   constructor(private fb: FormBuilder) { }
 
@@ -44,6 +46,13 @@ export class PaginaDinamicosComponent {
     return array.controls[indice].errors && array.controls[indice].touched;
   }
 
+  anhadirFavorito(): void {
+    if (this.nuevoFavorito.invalid) { return; }
+    const nuevoJuego = this.nuevoFavorito.value;
+    this.juegosFavoritos.push(this.fb.control(nuevoJuego, Validators.required))
+    this.nuevoFavorito.reset();
+  }
+
   eliminarFavorito(indice: number): void {
     this.juegosFavoritos.removeAt(indice);
   }
@@ -55,6 +64,7 @@ export class PaginaDinamicosComponent {
     }
 
     console.log(this.formulario.value);
+    (this.formulario.controls['juegosFavoritos'] as FormArray) = this.fb.array([]);
     this.formulario.reset();
   }
 
