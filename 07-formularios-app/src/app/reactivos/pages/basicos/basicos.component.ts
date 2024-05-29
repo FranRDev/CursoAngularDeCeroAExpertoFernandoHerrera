@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgModel } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({ templateUrl: './basicos.component.html' })
 export class PaginaBasicosComponent {
@@ -11,14 +11,15 @@ export class PaginaBasicosComponent {
   // });
 
   public formulario: FormGroup = this.fb.group({
-    nombre: [''],
-    precio: [0],
-    existencias: [0]
+    nombre: ['', [Validators.required, Validators.minLength(3)]],
+    precio: [0, [Validators.required, Validators.min(0)]],
+    existencias: [0, [Validators.required, Validators.min(0)]]
   });
 
   constructor(private fb: FormBuilder) { }
 
   guardar(): void {
+    if (this.formulario.invalid) { return; }
     console.log(this.formulario.value);
   }
 
