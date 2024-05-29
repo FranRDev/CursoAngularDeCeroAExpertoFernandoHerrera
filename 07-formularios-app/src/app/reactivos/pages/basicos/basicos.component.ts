@@ -1,8 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+const rtx5090 = {
+  nombre: 'RTX 5090',
+  precio: 2500,
+  existencias: 6
+}
+
 @Component({ templateUrl: './basicos.component.html' })
-export class PaginaBasicosComponent {
+export class PaginaBasicosComponent implements OnInit {
 
   // public formulario: FormGroup = new FormGroup({
   //   nombre: new FormControl(''),
@@ -18,9 +24,14 @@ export class PaginaBasicosComponent {
 
   constructor(private fb: FormBuilder) { }
 
+  ngOnInit(): void {
+    this.formulario.reset(rtx5090);
+  }
+
   guardar(): void {
     if (this.formulario.invalid) { return; }
     console.log(this.formulario.value);
+    this.formulario.reset({ precio: 0, existencias: 0 });
   }
 
 }
