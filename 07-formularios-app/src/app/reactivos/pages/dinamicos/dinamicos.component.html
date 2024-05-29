@@ -8,8 +8,9 @@
     <label class="col-sm-3 col-form-label">Nombre</label>
     <div class="col-sm-9">
       <input formControlName="nombre" class="form-control" placeholder="Nombre de la persona">
-      <span class="form-text text-danger">
-        error message
+
+      <span *ngIf="esCampoValido('nombre')" class="form-text text-danger">
+        {{ obtenerErrorCampo('nombre') }}
       </span>
     </div>
   </div>
@@ -42,8 +43,8 @@
           </button>
         </div>
 
-        <span class="form-text text-danger">
-          Este campo es requerido
+        <span *ngIf="esCampoArrayValido(juegosFavoritos, indice)" class="form-text text-danger">
+          Este campo es obligatorio
         </span>
       </div>
     </div>

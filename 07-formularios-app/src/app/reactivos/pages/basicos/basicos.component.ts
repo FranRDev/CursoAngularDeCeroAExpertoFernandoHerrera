@@ -44,13 +44,10 @@ export class PaginaBasicosComponent implements OnInit {
 
         case 'minlength':
           return `Se requieren mínimo ${errores['minlength'].requiredLength} caracteres`;
-
-        default:
-          return null;
       }
     }
 
-    return 'Hola mundo';
+    return null;
   }
 
   guardar(): void {

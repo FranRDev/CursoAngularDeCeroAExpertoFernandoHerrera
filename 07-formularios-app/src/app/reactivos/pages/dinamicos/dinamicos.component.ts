@@ -18,6 +18,32 @@ export class PaginaDinamicosComponent {
     return this.formulario.get('juegosFavoritos') as FormArray;
   }
 
+  esCampoValido(campo: string): boolean | null {
+    return this.formulario.controls[campo].errors && this.formulario.controls[campo].touched;
+  }
+
+  obtenerErrorCampo(campo: string): string | null {
+    if (!this.formulario.controls[campo]) { return null; }
+
+    const errores = this.formulario.controls[campo].errors || {};
+
+    for (const error of Object.keys(errores)) {
+      switch (error) {
+        case 'required':
+          return 'Este campo es obligatorio';
+
+        case 'minlength':
+          return `Se requieren mínimo ${errores['minlength'].requiredLength} caracteres`;
+      }
+    }
+
+    return null;
+  }
+
+  esCampoArrayValido(array: FormArray, indice: number): boolean | null {
+    return array.controls[indice].errors && array.controls[indice].touched;
+  }
+
   guardar(): void {
     if (this.formulario.invalid) {
       this.formulario.markAllAsTouched();
