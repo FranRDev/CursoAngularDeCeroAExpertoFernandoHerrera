@@ -25,11 +25,15 @@ export class PaginaBasicosComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.formulario.reset(rtx5090);
+    // this.formulario.reset(rtx5090);
   }
 
   guardar(): void {
-    if (this.formulario.invalid) { return; }
+    if (this.formulario.invalid) {
+      this.formulario.markAllAsTouched();
+      return;
+    }
+
     console.log(this.formulario.value);
     this.formulario.reset({ precio: 0, existencias: 0 });
   }
