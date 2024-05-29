@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({ templateUrl: './interruptores.component.html' })
-export class PaginaInterruptoresComponent {
+export class PaginaInterruptoresComponent implements OnInit {
 
   public formulario: FormGroup = this.fb.group({
     genero: ['M', Validators.required],
@@ -10,7 +10,16 @@ export class PaginaInterruptoresComponent {
     terminosYCondiciones: [false, Validators.requiredTrue]
   });
 
+  public persona = {
+    genero: 'F',
+    notificaciones: false
+  }
+
   constructor(private fb: FormBuilder) { }
+
+  ngOnInit(): void {
+    this.formulario.reset(this.persona);
+  }
 
   esCampoValido(campo: string): boolean | null {
     return this.formulario.controls[campo].errors && this.formulario.controls[campo].touched;
@@ -40,8 +49,9 @@ export class PaginaInterruptoresComponent {
       return;
     }
 
-    console.log(this.formulario.value);
-    this.formulario.reset();
+    const { terminosYCondiciones, ...nuevaPersona } = this.formulario.value;
+    console.log(nuevaPersona);
+    this.persona = nuevaPersona;
   }
 
 }

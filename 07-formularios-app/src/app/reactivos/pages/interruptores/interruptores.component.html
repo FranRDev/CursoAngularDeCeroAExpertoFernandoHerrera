@@ -18,8 +18,8 @@
         <label class="form-check-label" for="radioFemenino">Femenino</label>
       </div>
 
-      <span *ngIf="esCampoValido('notificaciones')" class="form-text text-danger">
-        {{ obtenerErrorCampo('notificaciones') }}
+      <span *ngIf="esCampoValido('genero')" class="form-text text-danger">
+        {{ obtenerErrorCampo('genero') }}
       </span>
     </div>
   </div>
@@ -52,7 +52,7 @@
       </div>
 
       <span *ngIf="esCampoValido('terminosYCondiciones')" class="form-text text-danger">
-        {{ obtenerErrorCampo('terminosYCondiciones') }}
+        Debe aceptar los términos y condiciones de uso
       </span>
     </div>
   </div>
@@ -73,7 +73,7 @@
 <br>
 
 <h5>Persona</h5>
-<pre>{{ 'object' | json }}</pre>
+<pre>{{ persona | json }}</pre>
 <br>
 
 <h5>Valid</h5>
