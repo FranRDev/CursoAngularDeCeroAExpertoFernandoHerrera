@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup, ValidationErrors } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors } from '@angular/forms';
 
 @Injectable({ providedIn: 'root' })
 export class ValidacionesService {
@@ -17,6 +17,21 @@ export class ValidacionesService {
 
   esCampoValido(formulario: FormGroup, campo: string): boolean | null {
     return formulario.controls[campo].errors && formulario.controls[campo].touched;
+  }
+
+  camposIguales(campo1: string, campo2: string) {
+    return (formulario: AbstractControl): ValidationErrors | null => {
+      const valor1 = formulario.get(campo1)?.value;
+      const valor2 = formulario.get(campo2)?.value;
+
+      if (valor1 !== valor2) {
+        formulario.get(campo2)?.setErrors({ noIguales: true });
+        return ({ noIguales: true });
+      }
+
+      formulario.get(campo2)?.setErrors(null);
+      return null;
+    }
   }
 
 }

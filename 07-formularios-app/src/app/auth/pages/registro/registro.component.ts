@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ValidacionesService } from '../../../shared/services/validaciones.service';
-import { ValidadorCorreo } from '../../../shared/validators/validaciones-correo-service';
+import { ValidadorCorreo } from '../../../shared/validators/validaciones-correo.service';
 
 @Component({ templateUrl: './registro.component.html' })
 export class PaginaRegistroComponent {
@@ -13,6 +13,10 @@ export class PaginaRegistroComponent {
     usuario: ['', [Validators.required, this.servicioValidaciones.puedeSerFranRDev]],
     clave: ['', [Validators.required]],
     claveRepetida: ['', [Validators.required]]
+  }, {
+    validators: [
+      this.servicioValidaciones.camposIguales('clave', 'claveRepetida')
+    ]
   });
 
   constructor(
