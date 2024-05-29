@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
 @Component({ templateUrl: './interruptores.component.html' })
-export class InterruptoresComponent {
+export class PaginaInterruptoresComponent {
 
 }
