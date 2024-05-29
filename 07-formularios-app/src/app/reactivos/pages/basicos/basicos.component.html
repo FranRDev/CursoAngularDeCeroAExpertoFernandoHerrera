@@ -13,12 +13,8 @@
         <div class="col-sm-9">
           <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre del producto">
 
-          <span *ngIf="formulario.controls['nombre'].getError('required') && formulario.controls['nombre'].touched" class="form-text text-danger">
-            Este campo es requerido
-          </span>
-
-          <span *ngIf="formulario.controls['nombre'].getError('minlength') && formulario.controls['nombre'].touched" class="form-text text-danger">
-            Este campo requiere mínimo 3 letras
+          <span *ngIf="esCampoValido('nombre')" class="form-text text-danger">
+            {{ obtenerErrorCampo('nombre') }}
           </span>
         </div>
       </div>
@@ -28,7 +24,8 @@
         <label class="col-sm-3 col-form-label">Precio</label>
         <div class="col-sm-9">
           <input formControlName="precio" type="number" class="form-control" placeholder="Precio del producto">
-          <span class="form-text text-danger">
+
+          <span *ngIf="esCampoValido('precio')" class="form-text text-danger">
             El precio debe de ser 0 o mayor
           </span>
         </div>
@@ -40,7 +37,7 @@
         <div class="col-sm-9">
           <input formControlName="existencias" type="number" class="form-control" placeholder="Existencias del producto">
 
-          <span class="form-text text-danger">
+          <span *ngIf="esCampoValido('existencias')" class="form-text text-danger">
             Las existencias deben de ser 0 o mayor
           </span>
         </div>

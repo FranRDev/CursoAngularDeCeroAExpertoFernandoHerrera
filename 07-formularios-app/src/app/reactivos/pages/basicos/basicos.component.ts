@@ -28,6 +28,31 @@ export class PaginaBasicosComponent implements OnInit {
     // this.formulario.reset(rtx5090);
   }
 
+  esCampoValido(campo: string): boolean | null {
+    return this.formulario.controls[campo].errors && this.formulario.controls[campo].touched;
+  }
+
+  obtenerErrorCampo(campo: string): string | null {
+    if (!this.formulario.controls[campo]) { return null; }
+
+    const errores = this.formulario.controls[campo].errors || {};
+
+    for (const error of Object.keys(errores)) {
+      switch (error) {
+        case 'required':
+          return 'Este campo es obligatorio';
+
+        case 'minlength':
+          return `Se requieren mínimo ${errores['minlength'].requiredLength} caracteres`;
+
+        default:
+          return null;
+      }
+    }
+
+    return 'Hola mundo';
+  }
+
   guardar(): void {
     if (this.formulario.invalid) {
       this.formulario.markAllAsTouched();
