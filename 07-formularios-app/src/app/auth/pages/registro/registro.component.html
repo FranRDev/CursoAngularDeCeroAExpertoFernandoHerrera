@@ -80,10 +80,10 @@
 <pre>{{ formulario.errors| json }}</pre>
 
 <h5>Nombre</h5>
-<pre>{{ formulario.value.nombre | json }}</pre>
+<pre>{{ formulario.controls['nombre'].errors | json }}</pre>
 
 <h5>Email</h5>
-<pre>{{ formulario.value.correo | json }}</pre>
+<pre>{{ formulario.controls['correo'].errors | json }}</pre>
 
 <h5>Username</h5>
 <pre>{{ formulario.controls['usuario'].errors | json }}</pre>

@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { puedeSerFranRDev } from '../../../shared/validators/validaciones';
+import * as Validadores from '../../../shared/validators/validaciones';
+import { patronCorreo } from '../../../shared/validators/validaciones';
 
 @Component({ templateUrl: './registro.component.html' })
 export class PaginaRegistroComponent {
 
   public formulario: FormGroup = this.fb.group({
-    nombre: ['', [Validators.required]],
-    correo: ['', [Validators.required]],
-    usuario: ['', [Validators.required, puedeSerFranRDev]],
+    nombre: ['', [Validators.required, Validators.pattern(Validadores.patronNombreYApellido)]],
+    correo: ['', [Validators.required, Validators.pattern(Validadores.patronCorreo)]],
+    usuario: ['', [Validators.required, Validadores.puedeSerFranRDev]],
     clave: ['', [Validators.required]],
     claveRepetida: ['', [Validators.required]]
   });
