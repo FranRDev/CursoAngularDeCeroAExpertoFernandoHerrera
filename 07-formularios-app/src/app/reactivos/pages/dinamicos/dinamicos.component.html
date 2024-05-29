@@ -38,7 +38,7 @@
         <div class="input-group">
           <input [formControlName]="indice" class="form-control">
 
-          <button class="btn btn-outline-danger" type="button">
+          <button (click)="eliminarFavorito(indice)" class="btn btn-outline-danger" type="button">
             Eliminar
           </button>
         </div>

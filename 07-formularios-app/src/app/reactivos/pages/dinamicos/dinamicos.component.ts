@@ -44,6 +44,10 @@ export class PaginaDinamicosComponent {
     return array.controls[indice].errors && array.controls[indice].touched;
   }
 
+  eliminarFavorito(indice: number): void {
+    this.juegosFavoritos.removeAt(indice);
+  }
+
   guardar(): void {
     if (this.formulario.invalid) {
       this.formulario.markAllAsTouched();
