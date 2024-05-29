@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ValidacionesService } from '../../../shared/services/validaciones.service';
-import { ValidacionesCorreo } from '../../../shared/validators/validaciones-correo-service';
+import { ValidadorCorreo } from '../../../shared/validators/validaciones-correo-service';
 
 @Component({ templateUrl: './registro.component.html' })
 export class PaginaRegistroComponent {
@@ -18,7 +18,7 @@ export class PaginaRegistroComponent {
   constructor(
     private fb: FormBuilder,
     private servicioValidaciones: ValidacionesService,
-    private validacionesCorreo: ValidacionesCorreo
+    private validacionesCorreo: ValidadorCorreo
   ) { }
 
   esCampoValido(campo: string) {
