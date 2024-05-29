@@ -1,24 +1,26 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import * as Validadores from '../../../shared/validators/validaciones';
-import { patronCorreo } from '../../../shared/validators/validaciones';
+import { ValidacionesService } from '../../../shared/services/validaciones.service';
 
 @Component({ templateUrl: './registro.component.html' })
 export class PaginaRegistroComponent {
 
   public formulario: FormGroup = this.fb.group({
-    nombre: ['', [Validators.required, Validators.pattern(Validadores.patronNombreYApellido)]],
-    correo: ['', [Validators.required, Validators.pattern(Validadores.patronCorreo)]],
-    usuario: ['', [Validators.required, Validadores.puedeSerFranRDev]],
+    nombre: ['', [Validators.required, Validators.pattern(this.servicioValidaciones.patronNombreYApellido)]],
+    correo: ['', [Validators.required, Validators.pattern(this.servicioValidaciones.patronCorreo)]],
+    usuario: ['', [Validators.required, this.servicioValidaciones.puedeSerFranRDev]],
     clave: ['', [Validators.required]],
     claveRepetida: ['', [Validators.required]]
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private servicioValidaciones: ValidacionesService
+  ) { }
 
   esCampoValido(campo: string) {
-    // TODO: Obtener de servicio
+    return this.servicioValidaciones.esCampoValido(this.formulario, campo);
   }
 
   guardar(): void {
