@@ -9,7 +9,7 @@ const routes: Routes = [{
     { path: 'selectores', component: PaginaSelectoresComponent },
     { path: '**', redirectTo: 'selectores' }
   ]
-}]
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
