@@ -1,1 +1,5 @@
-<p>menu-lateral works!</p>
+<ul class="list-group">
+  <li *ngFor="let elemento of elementosMenu" [routerLink]="[elemento.ruta]" routerLinkActive="active" class="list-group-item">
+    Elemento 1
+  </li>
+</ul>
