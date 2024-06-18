@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { PaisesService } from '../../services/paises.service';
-import { Region } from '../../interfaces/paises.interfaces';
 import { switchMap } from 'rxjs';
+
+import { PaisesService } from '../../services/paises.service';
+import { PaisReducido, Region } from '../../interfaces/paises.interfaces';
 
 @Component({
   selector: 'pagina-selectores',
   templateUrl: './selectores.component.html'
 })
 export class PaginaSelectoresComponent implements OnInit {
+
+  public paisesPorContinente: PaisReducido[] = [];
 
   public formulario: FormGroup = this.fb.group({
     continente: ['', Validators.required],
@@ -33,7 +36,7 @@ export class PaginaSelectoresComponent implements OnInit {
   continenteCambiado(): void {
     this.formulario.get('continente')!.valueChanges
       .pipe(switchMap(continente => this.servicioPaises.obtenerPaisesPorContinente(continente)))
-      .subscribe(continente => { console.log(continente); })
+      .subscribe(paises => this.paisesPorContinente = paises)
   }
 
 }

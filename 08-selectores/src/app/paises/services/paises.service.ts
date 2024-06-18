@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
-import { PaisReducido, Region } from '../interfaces/paises.interfaces';
-import { Observable, of, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+import { Observable, map, of } from 'rxjs';
+
+import { Pais, PaisReducido, Region } from '../interfaces/paises.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +23,18 @@ export class PaisesService {
 
   obtenerPaisesPorContinente(continente: Region): Observable<PaisReducido[]> {
     if (!continente) { return of([]); }
+
     const url: string = `${this.urlBase}/region/${continente}?fields=name,cca3,borders`;
-    return this.clienteHttp.get<PaisReducido[]>(url).pipe(tap(respuesta => console.log({ respuesta })));
+
+    return this.clienteHttp
+      .get<Pais[]>(url)
+      .pipe(
+        map(paises => paises.map(pais => ({
+          nombre: pais.name.common,
+          cca3: pais.cca3,
+          fronteras: pais.borders ?? []
+        })))
+      );
   }
 
 }
