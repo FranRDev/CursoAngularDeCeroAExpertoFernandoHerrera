@@ -15,7 +15,7 @@
   </div>
 
   <!-- Países -->
-  <div class="row mb-3">
+  <div class="row mb-3" *ngIf="paisesPorContinente.length > 0">
     <div class="col">
       <label class="form-label">País:</label>
       <select formControlName="pais" class="form-control">

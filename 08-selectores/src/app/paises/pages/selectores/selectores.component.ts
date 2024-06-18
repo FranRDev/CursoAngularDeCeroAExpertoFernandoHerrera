@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { switchMap } from 'rxjs';
+import { switchMap, tap } from 'rxjs';
 
 import { PaisesService } from '../../services/paises.service';
 import { PaisReducido, Region } from '../../interfaces/paises.interfaces';
@@ -35,7 +35,10 @@ export class PaginaSelectoresComponent implements OnInit {
 
   continenteCambiado(): void {
     this.formulario.get('continente')!.valueChanges
-      .pipe(switchMap(continente => this.servicioPaises.obtenerPaisesPorContinente(continente)))
+      .pipe(
+        tap(() => this.formulario.get('pais')!.setValue('')),
+        switchMap(continente => this.servicioPaises.obtenerPaisesPorContinente(continente))
+      )
       .subscribe(paises => this.paisesPorContinente = paises)
   }
 
