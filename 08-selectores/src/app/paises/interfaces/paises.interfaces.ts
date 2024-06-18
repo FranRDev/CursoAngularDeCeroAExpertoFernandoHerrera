@@ -1,6 +1,12 @@
 export enum Region { Africa = 'Africa', Americas = 'Americas', Asia = 'Asia', Europe = 'Europe', Oceania = 'Oceania' }
 
-export interface Continente {
+export interface PaisReducido {
+  nombre: string;
+  cca3: string;
+  fronteras: string[];
+}
+
+export interface Pais {
   name: Name;
   cca3: string;
   status: Status;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { PaisesService } from '../../services/paises.service';
@@ -8,7 +8,7 @@ import { Region } from '../../interfaces/paises.interfaces';
   selector: 'pagina-selectores',
   templateUrl: './selectores.component.html'
 })
-export class PaginaSelectoresComponent {
+export class PaginaSelectoresComponent implements OnInit {
 
   public formulario: FormGroup = this.fb.group({
     continente: ['', Validators.required],
@@ -21,8 +21,16 @@ export class PaginaSelectoresComponent {
     private servicioPaises: PaisesService
   ) { }
 
+  ngOnInit(): void {
+    this.continenteCambiado();
+  }
+
   get continentes(): Region[] {
     return this.servicioPaises.continentes;
+  }
+
+  continenteCambiado(): void {
+    this.formulario.get('continente')!.valueChanges.subscribe(continente => { console.log(continente); })
   }
 
 }

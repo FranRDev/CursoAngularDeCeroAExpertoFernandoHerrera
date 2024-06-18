@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Region } from '../interfaces/paises.interfaces';
+import { PaisReducido, Region } from '../interfaces/paises.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,11 @@ export class PaisesService {
 
   get continentes(): Region[] {
     return [...this._continentes];
+  }
+
+  obtenerPaisesPorContinente(continente: Region): PaisReducido[] {
+
+    return [];
   }
 
 }
