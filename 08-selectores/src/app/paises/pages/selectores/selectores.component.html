@@ -7,10 +7,14 @@
    <div class="row mb-3">
     <div class="col">
       <label class="form-label">Continente:</label>
-      <select class="form-control">
+      <select formControlName="continente" class="form-control">
         <option value="">Seleccione el continente</option>
       </select>
     </div>
    </div>
 
 </form>
+
+<h3>Formulario</h3>
+<code>{{ formulario.value | json }}</code>
+<p>¿Válido? {{ formulario.valid }}</p>
