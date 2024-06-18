@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { PaisesService } from '../../services/paises.service';
 import { Region } from '../../interfaces/paises.interfaces';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'pagina-selectores',
@@ -30,7 +31,9 @@ export class PaginaSelectoresComponent implements OnInit {
   }
 
   continenteCambiado(): void {
-    this.formulario.get('continente')!.valueChanges.subscribe(continente => { console.log(continente); })
+    this.formulario.get('continente')!.valueChanges
+      .pipe(switchMap(continente => this.servicioPaises.obtenerPaisesPorContinente(continente)))
+      .subscribe(continente => { console.log(continente); })
   }
 
 }
