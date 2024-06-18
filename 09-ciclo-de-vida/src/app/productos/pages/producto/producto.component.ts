@@ -8,6 +8,7 @@ import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit,
 export class PaginaProductoComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 
   public productoVisible: boolean = false;
+  public precioActual: number = 10;
 
   constructor () {
     console.log('constructor');
@@ -44,6 +45,10 @@ export class PaginaProductoComponent implements OnInit, OnChanges, DoCheck, Afte
 
   ngOnDestroy(): void {
     console.log('ngOnDestroy');
+  }
+
+  incrementarPrecio(): void {
+    this.precioActual++;
   }
 
 }

@@ -1,5 +1,6 @@
 <p>producto works!</p>
 
-<precio />
+<precio *ngIf="productoVisible" [precio]="precioActual" />
 
 <button (click)="productoVisible = !productoVisible">Cambiar</button>
+<button (click)="incrementarPrecio()">Precio +1</button>
