@@ -9,6 +9,7 @@
       <label class="form-label">Continente:</label>
       <select formControlName="continente" class="form-control">
         <option value="">Seleccione el continente</option>
+            <option *ngFor="let continente of continentes" [value]="continente">{{ continente }}</option>
       </select>
     </div>
    </div>
