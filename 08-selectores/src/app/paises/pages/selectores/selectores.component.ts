@@ -13,7 +13,7 @@ import { PaisReducido, Region } from '../../interfaces/paises.interfaces';
 export class PaginaSelectoresComponent implements OnInit {
 
   public paisesPorContinente: PaisReducido[] = [];
-  public fronterasPorPais: string[] = [];
+  public fronterasPorPais: PaisReducido[] = [];
 
   public formulario: FormGroup = this.fb.group({
     continente: ['', Validators.required],
@@ -50,9 +50,10 @@ export class PaginaSelectoresComponent implements OnInit {
       .pipe(
         tap(() => this.formulario.get('frontera')!.setValue('')),
         filter((valor: string) => valor.length > 0),
-        switchMap(codigoAlfa => this.servicioPaises.obtenerPaisPorCodigoAlfa(codigoAlfa))
+        switchMap(codigoAlfa => this.servicioPaises.obtenerPaisPorCodigoAlfa(codigoAlfa)),
+        switchMap(pais => this.servicioPaises.obtenerPaisesFronterasPorCodigoAlfa(pais.fronteras))
       )
-      .subscribe(pais => this.fronterasPorPais = pais.fronteras)
+      .subscribe(fronteras => this.fronterasPorPais = fronteras)
   }
 
 }
