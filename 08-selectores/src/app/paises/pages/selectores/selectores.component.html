@@ -20,7 +20,18 @@
       <label class="form-label">País:</label>
       <select formControlName="pais" class="form-control">
         <option value="">Seleccione el país</option>
-        <option *ngFor="let pais of paisesPorContinente" [value]="pais">{{ pais.nombre }}</option>
+        <option *ngFor="let pais of paisesPorContinente" [value]="pais.cca3">{{ pais.nombre }}</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Fronteras -->
+  <div class="row mb-3" *ngIf="fronterasPorPais.length > 0">
+    <div class="col">
+      <label class="form-label">Frontera:</label>
+      <select formControlName="frontera" class="form-control">
+        <option value="">Seleccione la frontera</option>
+        <option *ngFor="let frontera of fronterasPorPais" [value]="frontera">{{ frontera }}</option>
       </select>
     </div>
   </div>

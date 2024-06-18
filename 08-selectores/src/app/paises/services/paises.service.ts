@@ -37,4 +37,18 @@ export class PaisesService {
       );
   }
 
+  obtenerPaisPorCodigoAlfa(codigo: string): Observable<PaisReducido> {
+    const url: string = `${this.urlBase}/alpha/${codigo}?fields=name,cca3,borders`;
+
+    return this.clienteHttp
+      .get<Pais>(url)
+      .pipe(
+        map(pais => ({
+          nombre: pais.name.common,
+          cca3: pais.cca3,
+          fronteras: pais.borders ?? []
+        }))
+      );
+  }
+
 }
