@@ -1,8 +1,10 @@
 <div id="mapa" #mapa></div>
 
 <ul class="list-group">
-  <li class="list-group-item">
-    Marcador 1
+  <li *ngFor="let marcadorColor of marcadoresColores; index as indice"
+    [ngStyle]="{backgroundColor: marcadorColor.color}" class="list-group-item" (dblclick)="eliminarMarcador(indice)">
+
+    Marcador {{ indice + 1 }}
   </li>
 </ul>
 

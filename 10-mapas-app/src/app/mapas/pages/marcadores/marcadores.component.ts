@@ -2,6 +2,11 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 import { LngLat, Map, Marker } from 'mapbox-gl';
 
+interface MarcadorYColor {
+  marcador: Marker;
+  color: string;
+}
+
 @Component({
   templateUrl: './marcadores.component.html',
   styleUrl: './marcadores.component.css'
@@ -12,6 +17,7 @@ export class PaginaMarcadoresComponent implements AfterViewInit {
 
   public mapa?: Map;
   public lngLat: LngLat = new LngLat(-112.04, 46.62);
+  public marcadoresColores: MarcadorYColor[] = [];
 
   ngAfterViewInit(): void {
     if (!this.divMapa) { throw 'Elemento HTML no encontrado'; }
@@ -37,8 +43,13 @@ export class PaginaMarcadoresComponent implements AfterViewInit {
 
   anhadirMarcador(lngLat: LngLat, color: string): void {
     if (!this.mapa) { return; }
-
     const marcador = new Marker({ color, draggable: true }).setLngLat(lngLat).addTo(this.mapa);
+    this.marcadoresColores.push({ marcador, color });
+  }
+
+  eliminarMarcador(indice: number): void {
+    this.marcadoresColores[indice].marcador.remove();
+    this.marcadoresColores.splice(indice, 1);
   }
 
 }
