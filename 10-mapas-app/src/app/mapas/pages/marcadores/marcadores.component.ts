@@ -27,4 +27,18 @@ export class PaginaMarcadoresComponent implements AfterViewInit {
     // marcadorHtml.innerHTML = 'FranRDev';
     // const marcador = new Marker({ color: 'red', element: marcadorHtml }).setLngLat(this.lngLat).addTo(this.mapa);
   }
+
+  crearMarcador(): void {
+    if (!this.mapa) { return; }
+    const color = '#xxxxxx'.replace(/x/g, y => (Math.random() * 16 | 0).toString(16));
+    const lngLat = this.mapa.getCenter();
+    this.anhadirMarcador(lngLat, color);
+  }
+
+  anhadirMarcador(lngLat: LngLat, color: string): void {
+    if (!this.mapa) { return; }
+
+    const marcador = new Marker({ color, draggable: true }).setLngLat(lngLat).addTo(this.mapa);
+  }
+
 }
