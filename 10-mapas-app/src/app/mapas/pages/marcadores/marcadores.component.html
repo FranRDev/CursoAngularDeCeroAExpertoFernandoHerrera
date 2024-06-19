@@ -2,7 +2,8 @@
 
 <ul class="list-group">
   <li *ngFor="let marcadorColor of marcadoresColores; index as indice"
-    [ngStyle]="{backgroundColor: marcadorColor.color}" class="list-group-item" (dblclick)="eliminarMarcador(indice)">
+    [ngStyle]="{backgroundColor: marcadorColor.color}" class="list-group-item" (dblclick)="eliminarMarcador(indice)"
+    (click)="volarA(marcadorColor.marcador)">
 
     Marcador {{ indice + 1 }}
   </li>

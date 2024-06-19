@@ -52,4 +52,8 @@ export class PaginaMarcadoresComponent implements AfterViewInit {
     this.marcadoresColores.splice(indice, 1);
   }
 
+  volarA(marcador: Marker) {
+    this.mapa?.flyTo({ zoom: 14, center: marcador.getLngLat() });
+  }
+
 }
