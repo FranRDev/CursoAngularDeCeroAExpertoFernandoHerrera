@@ -14,10 +14,10 @@ export class PaginaPantallaCompletaComponent implements AfterViewInit {
     if (!this.divMapa) { throw 'Elemento HTML no encontrado'; }
 
     const mapa = new Map({
-      container: this.divMapa.nativeElement, // container ID
-      style: 'mapbox://styles/mapbox/streets-v12', // style URL
-      center: [-74.5, 40], // starting position [lng, lat]
-      zoom: 9, // starting zoom
+      container: this.divMapa.nativeElement,
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: [-74.5, 40], // [lng, lat]
+      zoom: 9,
     });
 
   }
