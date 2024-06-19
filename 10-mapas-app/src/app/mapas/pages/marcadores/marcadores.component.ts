@@ -7,6 +7,11 @@ interface MarcadorYColor {
   color: string;
 }
 
+interface MarcadorPlano {
+  color: string;
+  lngLat: number[]
+}
+
 @Component({
   templateUrl: './marcadores.component.html',
   styleUrl: './marcadores.component.css'
@@ -29,6 +34,8 @@ export class PaginaMarcadoresComponent implements AfterViewInit {
       zoom: 13
     });
 
+    this.cargarDeAlmacenamientoLocal();
+
     // const marcadorHtml = document.createElement('div');
     // marcadorHtml.innerHTML = 'FranRDev';
     // const marcador = new Marker({ color: 'red', element: marcadorHtml }).setLngLat(this.lngLat).addTo(this.mapa);
@@ -45,15 +52,36 @@ export class PaginaMarcadoresComponent implements AfterViewInit {
     if (!this.mapa) { return; }
     const marcador = new Marker({ color, draggable: true }).setLngLat(lngLat).addTo(this.mapa);
     this.marcadoresColores.push({ marcador, color });
+    this.guardarEnAlmacenamientoLocal();
   }
 
   eliminarMarcador(indice: number): void {
     this.marcadoresColores[indice].marcador.remove();
     this.marcadoresColores.splice(indice, 1);
+    this.guardarEnAlmacenamientoLocal();
   }
 
   volarA(marcador: Marker) {
     this.mapa?.flyTo({ zoom: 14, center: marcador.getLngLat() });
+  }
+
+  guardarEnAlmacenamientoLocal(): void {
+    const marcadoresPlanos: MarcadorPlano[] = this.marcadoresColores.map(({ color, marcador }) => {
+      return { color, lngLat: marcador.getLngLat().toArray() };
+    });
+
+    localStorage.setItem('marcadoresPlanos', JSON.stringify(marcadoresPlanos));
+  }
+
+  cargarDeAlmacenamientoLocal(): void {
+    const jsonMarcadoresPlanos = localStorage.getItem('marcadoresPlanos') ?? '[]';
+    const marcadoresPlanos: MarcadorPlano[] = JSON.parse(jsonMarcadoresPlanos); //! OJO
+
+    marcadoresPlanos.forEach(({ color, lngLat: coordenadas }) => {
+      const [lng, lat] = coordenadas;
+      const lngLat = new LngLat(lng, lat);
+      this.anhadirMarcador(lngLat, color);
+    });
   }
 
 }
