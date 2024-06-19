@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 
 import { LngLat, Map, Marker } from 'mapbox-gl';
 
@@ -16,7 +16,7 @@ interface MarcadorPlano {
   templateUrl: './marcadores.component.html',
   styleUrl: './marcadores.component.css'
 })
-export class PaginaMarcadoresComponent implements AfterViewInit {
+export class PaginaMarcadoresComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('mapa') divMapa?: ElementRef;
 
@@ -41,6 +41,10 @@ export class PaginaMarcadoresComponent implements AfterViewInit {
     // const marcador = new Marker({ color: 'red', element: marcadorHtml }).setLngLat(this.lngLat).addTo(this.mapa);
   }
 
+  ngOnDestroy(): void {
+    this.mapa?.remove();
+  }
+
   crearMarcador(): void {
     if (!this.mapa) { return; }
     const color = '#xxxxxx'.replace(/x/g, y => (Math.random() * 16 | 0).toString(16));
@@ -53,6 +57,7 @@ export class PaginaMarcadoresComponent implements AfterViewInit {
     const marcador = new Marker({ color, draggable: true }).setLngLat(lngLat).addTo(this.mapa);
     this.marcadoresColores.push({ marcador, color });
     this.guardarEnAlmacenamientoLocal();
+    marcador.on('dragend', () => this.guardarEnAlmacenamientoLocal());
   }
 
   eliminarMarcador(indice: number): void {

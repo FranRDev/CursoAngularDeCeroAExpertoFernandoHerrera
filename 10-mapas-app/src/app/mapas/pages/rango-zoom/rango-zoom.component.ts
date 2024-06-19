@@ -44,7 +44,7 @@ export class PaginaRangoZoomComponent implements AfterViewInit, OnDestroy {
 
     this.mapa.on('move', () => {
       this.lngLat = this.mapa!.getCenter();
-    })
+    });
   }
 
   ampliarZoom(): void {
