@@ -16,7 +16,7 @@ export class MenuLateralComponent {
     { ruta: '/mapas/pantalla-completa', nombre: 'Pantalla completa' },
     { ruta: '/mapas/rango-zoom', nombre: 'Rango - Zoom' },
     { ruta: '/mapas/marcadores', nombre: 'Marcadores' },
-    { ruta: '/mapas/propiedades', nombre: 'Casas' },
+    { ruta: '/mapas/propiedades', nombre: 'Propiedades' },
   ];
 
 }

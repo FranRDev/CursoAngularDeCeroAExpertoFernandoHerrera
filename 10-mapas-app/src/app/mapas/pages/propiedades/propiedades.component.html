@@ -14,7 +14,7 @@
       <!-- Casas -->
       <div *ngFor="let casa of casas" class="col-4 mb-2">
         <div class="card">
-          <img src="..." alt="" class="card-img-top">
+          <mini-mapa [lngLat]="casa.lngLat" />
 
           <div class="card-body">
             <h5 class="card-title">{{ casa.titulo }}</h5>
