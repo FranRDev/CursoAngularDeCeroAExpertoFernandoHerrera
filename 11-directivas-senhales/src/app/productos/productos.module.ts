@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { PaginaProductoComponent } from './pages/producto/producto.component';
-import { PrductosRoutingModule } from './prductos-routing.module';
-
+import { PrductosRoutingModule } from './productos-routing.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { PrductosRoutingModule } from './prductos-routing.module';
   ],
   imports: [
     CommonModule,
-    PrductosRoutingModule
+    PrductosRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class PrductosModule { }
