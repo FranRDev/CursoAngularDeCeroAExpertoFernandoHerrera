@@ -8,7 +8,7 @@ import { ContadorComponent } from '../solo/components/contador/contador.componen
 import { environment } from '../../environments/environment';
 import { MapaLayoutComponent } from './layout/mapa-layout/mapa-layout.component';
 import { MapasRoutingModule } from './mapas-routing.module';
-import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.component';
+import { MenuLateralComponent } from '../solo/components/menu-lateral/menu-lateral.component';
 import { MiniMapaComponent } from './components/mini-mapa/mini-mapa.component';
 import { PaginaMarcadoresComponent } from './pages/marcadores/marcadores.component';
 import { PaginaPantallaCompletaComponent } from './pages/pantalla-completa/pantalla-completa.component';
@@ -18,7 +18,6 @@ import { PaginaRangoZoomComponent } from './pages/rango-zoom/rango-zoom.componen
 @NgModule({
   declarations: [
     MapaLayoutComponent,
-    MenuLateralComponent,
     MiniMapaComponent,
     PaginaMarcadoresComponent,
     PaginaPantallaCompletaComponent,
@@ -28,7 +27,8 @@ import { PaginaRangoZoomComponent } from './pages/rango-zoom/rango-zoom.componen
   imports: [
     CommonModule,
     ContadorComponent,
-    MapasRoutingModule
+    MapasRoutingModule,
+    MenuLateralComponent
   ]
 })
 export class MapasModule { }
