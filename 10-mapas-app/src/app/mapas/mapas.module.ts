@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import mapboxgl from 'mapbox-gl';
 mapboxgl.accessToken = environment.mapbox_token;
 
+import { ContadorComponent } from '../solo/components/contador/contador.component';
+import { environment } from '../../environments/environment';
 import { MapaLayoutComponent } from './layout/mapa-layout/mapa-layout.component';
 import { MapasRoutingModule } from './mapas-routing.module';
 import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.component';
@@ -12,7 +14,6 @@ import { PaginaMarcadoresComponent } from './pages/marcadores/marcadores.compone
 import { PaginaPantallaCompletaComponent } from './pages/pantalla-completa/pantalla-completa.component';
 import { PaginaPropiedadesComponent } from './pages/propiedades/propiedades.component';
 import { PaginaRangoZoomComponent } from './pages/rango-zoom/rango-zoom.component';
-import { environment } from '../../environments/environment';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { environment } from '../../environments/environment';
   ],
   imports: [
     CommonModule,
+    ContadorComponent,
     MapasRoutingModule
   ]
 })
