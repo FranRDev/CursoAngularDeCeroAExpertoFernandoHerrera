@@ -12,7 +12,7 @@
     </div>
 
     <div class="col-auto">
-      <span etiquetaPersonalizada [color]="color">Temporal</span>
+      <span etiquetaPersonalizada [color]="color" [errores]="formulario.get('nombre')?.errors">Temporal</span>
     </div>
   </div>
 
