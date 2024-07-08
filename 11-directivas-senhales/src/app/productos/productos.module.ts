@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { PaginaProductoComponent } from './pages/producto/producto.component';
 import { PrductosRoutingModule } from './productos-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { PrductosRoutingModule } from './productos-routing.module';
   imports: [
     CommonModule,
     PrductosRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class PrductosModule { }
