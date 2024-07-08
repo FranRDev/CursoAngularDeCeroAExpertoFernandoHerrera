@@ -53,7 +53,9 @@ export class EtiquetaPersonalizadaDirective implements OnInit {
     }
 
     if (errores.includes('minlength')) {
-      this.elementoHtml.nativeElement.innerText = 'Debe tener más de 6 caracteres';
+      const minimo = this._errores!['minlength']['requiredLength'];
+      const actual = this._errores!['minlength']['actualLength'];
+      this.elementoHtml.nativeElement.innerText = `Debe tener un mínimo de ${minimo} caracteres, actualmente tiene ${actual}`;
       return;
     }
 
