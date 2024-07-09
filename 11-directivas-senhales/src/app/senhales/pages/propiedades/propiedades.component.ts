@@ -1,11 +1,13 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, effect, OnInit, signal } from '@angular/core';
+
 import { Usuario } from '../../interfaces/usuario-respuesta.interface';
 
 @Component({
   templateUrl: './propiedades.component.html',
   styleUrl: './propiedades.component.css'
 })
-export class PaginaPropiedadesComponent {
+export class PaginaPropiedadesComponent implements OnInit {
+  public contador = signal(10);
 
   public usuario = signal<Usuario>({
     id: 1,
@@ -17,33 +19,46 @@ export class PaginaPropiedadesComponent {
 
   public nombreCompleto = computed<string>(() => `${this.usuario()!.first_name} ${this.usuario()!.last_name}`);
 
+  public efectoCambioUsuario = effect(() => {
+    console.log(`${this.usuario().first_name} - ${this.contador()}`);
+  });
+
+  ngOnInit(): void {
+    // setInterval(() => {
+    //   this.contador.update(c => c + 1);
+    // }, 1000);
+  }
+
   campoActualizado(campo: keyof Usuario, valor: string) {
-    this.usuario.update(u => {
+    this.usuario.update(usuario => {
       switch (campo) {
         case 'avatar':
-          u.avatar = valor;
+          usuario.avatar = valor;
           break;
 
         case 'email':
-          u.email = valor;
+          usuario.email = valor;
           break;
 
         case 'first_name':
-          u.first_name = valor;
+          usuario.first_name = valor;
           break;
 
         case 'id':
-          u.id = Number(valor);
+          usuario.id = Number(valor);
           break;
 
         case 'last_name':
-          u.last_name = valor;
+          usuario.last_name = valor;
           break;
       }
 
-      return u;
-    })
+      return usuario;
+    });
+  }
 
+  incrementar(valor: number) {
+    this.contador.update(c => c + valor);
   }
 
 }
