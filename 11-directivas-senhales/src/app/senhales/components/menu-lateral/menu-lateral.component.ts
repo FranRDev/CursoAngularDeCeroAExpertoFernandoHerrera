@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 interface ElementoMenu {
   titulo: string,
@@ -12,10 +12,16 @@ interface ElementoMenu {
 })
 export class MenuLateralComponent {
 
-  public elementosMenu: ElementoMenu[] = [
+  public elementosMenu = signal<ElementoMenu[]>([
     { titulo: 'Contador', ruta: 'contador' },
     { titulo: 'Info Usuario', ruta: 'info-usuario' },
-    { titulo: 'Propiedades', ruta: 'propiedades' },
-  ]
+    { titulo: 'Propiedades', ruta: 'propiedades' }
+  ]);
+
+  // public elementosMenu: ElementoMenu[] = [
+  //   { titulo: 'Contador', ruta: 'contador' },
+  //   { titulo: 'Info Usuario', ruta: 'info-usuario' },
+  //   { titulo: 'Propiedades', ruta: 'propiedades' },
+  // ]
 
 }
