@@ -3,14 +3,14 @@
 
 <div class="row">
   <div class="col-6">
-    <input #entradaCorreo type="text" class="form-control mb-2" (input)="campoActualizado('correo', entradaCorreo.value)">
-    <input #entradaNombre type="text" class="form-control mb-2" (input)="campoActualizado('nombre', entradaNombre.value)">
-    <input #entradaApellidos type="text" class="form-control mb-2" (input)="campoActualizado('apellidos', entradaApellidos.value)">
+    <input #entradaCorreo type="text" class="form-control mb-2" (input)="campoActualizado('email', entradaCorreo.value)" [value]="usuario().email">
+    <input #entradaNombre type="text" class="form-control mb-2" (input)="campoActualizado('first_name', entradaNombre.value)" [value]="usuario().first_name">
+    <input #entradaApellidos type="text" class="form-control mb-2" (input)="campoActualizado('last_name', entradaApellidos.value)" [value]="usuario().last_name">
   </div>
 
   <div class="col-6">
-    <pre>
-      {{ 'hola' }}
-    </pre>
+    <pre>{{ usuario() | json }}</pre>
+
+    {{ nombreCompleto() }}
   </div>
 </div>
