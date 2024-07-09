@@ -14,7 +14,7 @@ export class ServicioUsuariosService {
   private clienteHttp = inject(HttpClient);
 
   obtenerUsuarioPorId(id: number): Observable<Usuario> {
-    return this.clienteHttp.get<UsuarioRespuesta>(`${this.urlBase}/${id}`).pipe(map(r => r.usuario), tap(console.log));
+    return this.clienteHttp.get<UsuarioRespuesta>(`${this.urlBase}/${id}`).pipe(map(r => r.data), tap(console.log));
   }
 
 }

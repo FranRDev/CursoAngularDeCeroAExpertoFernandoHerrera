@@ -1,5 +1,5 @@
 export interface UsuarioRespuesta {
-  usuario: Usuario;
+  data: Usuario;
 }
 
 export interface Usuario {
