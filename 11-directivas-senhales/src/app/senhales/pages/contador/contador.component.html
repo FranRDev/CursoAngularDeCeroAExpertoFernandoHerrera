@@ -1,1 +1,10 @@
-<p>contador works!</p>
+<h1>Contador: {{ contador() }}</h1>
+<hr>
+<h2>Contador al cuadrado: {{ contadorAlCuadrado() }}</h2>
+<hr>
+
+<button (click)="incrementar(1)" class="btn btn-primary">+ 1</button>
+&nbsp;
+<button (click)="incrementar(-1)" class="btn btn-primary">- 1</button>
+&nbsp;
+<button (click)="contador.set(0)" class="btn btn-primary">Reiniciar</button>
