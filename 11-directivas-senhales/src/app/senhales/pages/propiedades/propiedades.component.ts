@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
 })
 export class PaginaPropiedadesComponent {
 
+  campoActualizado(campo: string, valor: string) {
+    console.log({ campo, valor });
+  }
+
 }

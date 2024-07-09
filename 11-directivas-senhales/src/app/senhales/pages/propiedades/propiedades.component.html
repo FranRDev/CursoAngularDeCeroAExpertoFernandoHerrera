@@ -1,1 +1,16 @@
-<p>propiedades works!</p>
+<h1>Mutaciones</h1>
+<hr>
+
+<div class="row">
+  <div class="col-6">
+    <input #entradaCorreo type="text" class="form-control mb-2" (input)="campoActualizado('correo', entradaCorreo.value)">
+    <input #entradaNombre type="text" class="form-control mb-2" (input)="campoActualizado('nombre', entradaNombre.value)">
+    <input #entradaApellidos type="text" class="form-control mb-2" (input)="campoActualizado('apellidos', entradaApellidos.value)">
+  </div>
+
+  <div class="col-6">
+    <pre>
+      {{ 'hola' }}
+    </pre>
+  </div>
+</div>
