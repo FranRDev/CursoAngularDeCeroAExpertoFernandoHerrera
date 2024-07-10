@@ -1,13 +1,33 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 
+import { Model } from 'mongoose';
+
+import { Usuario } from './entities/usuario.entity';
 import { UsuarioActualizacionDto } from './dto/usuario-actualizacion.dto';
 import { UsuarioCreacionDto } from './dto/usuario-creacion.dto';
 
 @Injectable()
 export class AuthService {
-  create(createAuthDto: UsuarioCreacionDto) {
-    console.log(createAuthDto);
-    return 'This action adds a new auth';
+
+  constructor(@InjectModel(Usuario.name) private modeloUsuario: Model<Usuario>) { }
+
+  async create(dto: UsuarioCreacionDto): Promise<Usuario> {
+    try {
+      const nuevoUsuario = new this.modeloUsuario(dto);
+
+      // TODO 1: Encriptar contraseña
+
+      // TODO 2: Guardar usuario
+
+      // TODO 3: Generar JWT
+
+      return await nuevoUsuario.save();
+
+    } catch (error) {
+      if (error.code === 11000) { throw new BadRequestException(`${dto.correo} ya existe`); }
+      throw new InternalServerErrorException('¡Sucedió algo terrible!');
+    }
   }
 
   findAll() {
@@ -25,4 +45,5 @@ export class AuthService {
   remove(id: number) {
     return `This action removes a #${id} auth`;
   }
+
 }
