@@ -3,33 +3,39 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { AuthService } from './auth.service';
 import { UsuarioActualizacionDto } from './dto/usuario-actualizacion.dto';
 import { UsuarioCreacionDto } from './dto/usuario-creacion.dto';
+import { UsuarioIniciarSesionDto } from './dto/usuario-inicio-sesion.dto';
 
-@Controller('auth')
+@Controller('usuarios')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly servicioAutenticacion: AuthService) { }
 
   @Post()
-  create(@Body() createAuthDto: UsuarioCreacionDto) {
-    return this.authService.create(createAuthDto);
+  crear(@Body() dto: UsuarioCreacionDto) {
+    return this.servicioAutenticacion.crear(dto);
+  }
+
+  @Post('/inicio-sesion')
+  iniciarSesion(@Body() dto: UsuarioIniciarSesionDto) {
+    return this.servicioAutenticacion.iniciarSesion(dto);
   }
 
   @Get()
   findAll() {
-    return this.authService.findAll();
+    return this.servicioAutenticacion.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.authService.findOne(+id);
+    return this.servicioAutenticacion.findOne(+id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAuthDto: UsuarioActualizacionDto) {
-    return this.authService.update(+id, updateAuthDto);
+    return this.servicioAutenticacion.update(+id, updateAuthDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.authService.remove(+id);
+    return this.servicioAutenticacion.remove(+id);
   }
 }
