@@ -1,6 +1,7 @@
 import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
+import * as bcrypt from 'bcryptjs';
 import { Model } from 'mongoose';
 
 import { Usuario } from './entities/usuario.entity';
@@ -14,15 +15,11 @@ export class AuthService {
 
   async create(dto: UsuarioCreacionDto): Promise<Usuario> {
     try {
-      const nuevoUsuario = new this.modeloUsuario(dto);
-
-      // TODO 1: Encriptar contraseña
-
-      // TODO 2: Guardar usuario
-
-      // TODO 3: Generar JWT
-
-      return await nuevoUsuario.save();
+      const { clave, ...datosUsuario } = dto;
+      const nuevoUsuario = new this.modeloUsuario({ clave: bcrypt.hashSync(clave, 10), ...datosUsuario });
+      await nuevoUsuario.save();
+      const { clave: _, ...usuario } = nuevoUsuario.toJSON();
+      return usuario;
 
     } catch (error) {
       if (error.code === 11000) { throw new BadRequestException(`${dto.correo} ya existe`); }

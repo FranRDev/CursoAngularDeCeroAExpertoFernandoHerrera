@@ -8,7 +8,7 @@ export class Usuario {
     @Prop({ unique: true, required: true })
     correo: string;
     @Prop({ minlength: 6, required: true })
-    clave: string;
+    clave?: string;
     @Prop({ type: [String], default: ['usuario'] })
     roles: string[];
     @Prop({ default: true })
