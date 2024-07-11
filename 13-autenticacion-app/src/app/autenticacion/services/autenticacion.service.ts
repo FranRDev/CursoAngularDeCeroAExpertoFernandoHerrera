@@ -22,17 +22,19 @@ export class AutenticacionService {
 
   constructor() { }
 
+  private establecerAutenticacion(usuario: Usuario, token: string): boolean {
+    this._usuarioActual.set(usuario);
+    this._estadoAutenticacion.set(EstadoAutenticacion.autenticado);
+    localStorage.setItem('token', token);
+    return true;
+  }
+
   inicioSesion(correo: string, clave: string): Observable<boolean> {
     const url = `${this.urlBase}/usuarios/inicio-sesion`;
     const cuerpo = { correo, clave };
     return this.clienteHttp.post<RespuestaInicioSesion>(url, cuerpo)
       .pipe(
-        tap(({ usuario, token }) => {
-          this._usuarioActual.set(usuario);
-          this._estadoAutenticacion.set(EstadoAutenticacion.autenticado);
-          localStorage.setItem('token', token);
-        }),
-        map(() => true),
+        map(({ usuario, token }) => this.establecerAutenticacion(usuario, token)),
         catchError(error => throwError(() => error.error.message))
       );
   }
@@ -45,12 +47,7 @@ export class AutenticacionService {
 
     return this.clienteHttp.get<RespuestaComprobarToken>(url, { headers: cabeceras })
       .pipe(
-        map(({ usuario, token }) => {
-          this._usuarioActual.set(usuario);
-          this._estadoAutenticacion.set(EstadoAutenticacion.autenticado);
-          localStorage.setItem('token', token);
-          return true;
-        }),
+        map(({ usuario, token }) => this.establecerAutenticacion(usuario, token)),
         catchError(() => {
           this._estadoAutenticacion.set(EstadoAutenticacion.noAutenticado);
           return of(false);
