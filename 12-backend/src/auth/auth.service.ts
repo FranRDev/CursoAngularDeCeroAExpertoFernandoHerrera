@@ -49,8 +49,8 @@ export class AuthService {
     return { usuario, token: await this.obtenerJwt({ id: usuario._id }) };
   }
 
-  findAll() {
-    return `This action returns all auth`;
+  buscarTodo(): Promise<Usuario[]> {
+    return this.modeloUsuario.find();
   }
 
   findOne(id: number) {
