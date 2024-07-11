@@ -22,7 +22,7 @@ export class AutorizacionGuard implements CanActivate {
       const usuario = await this.servicioUsuarios.buscarUsuarioPorId(carga.id);
       if (!usuario) { throw new UnauthorizedException('El usuario no existe'); }
       if (!usuario.activo) { throw new UnauthorizedException('El usuario no está activo'); }
-      solicitud['user'] = usuario;
+      solicitud['usuario'] = usuario;
 
     } catch (error) {
       throw new UnauthorizedException();
