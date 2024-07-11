@@ -1,5 +1,5 @@
 export enum EstadoAutenticacion {
-  comprobando,
-  autenticado,
-  noAutenticado
+  comprobando = 'comprobando',
+  autenticado = 'autenticado',
+  noAutenticado = 'noAutenticado'
 }

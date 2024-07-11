@@ -1,7 +1,13 @@
-import { CanActivateFn } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+import { AutenticacionService } from '../services/autenticacion.service';
+import { EstadoAutenticacion } from '../enums';
 
 export const autenticadoGuard: CanActivateFn = (route, state) => {
-  console.log('autenticadoGuard');
-  console.log({ route, state });
-  return true;
+  const servicioAutenticacion = inject(AutenticacionService);
+  if (servicioAutenticacion.estadoAutenticacion() === EstadoAutenticacion.autenticado) { return true; }
+  const enrutador = inject(Router);
+  // localStorage.setItem('url', state.url);
+  enrutador.navigateByUrl('/autenticacion/inicio-sesion')
+  return false;
 };

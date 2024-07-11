@@ -18,7 +18,7 @@ export class AutenticacionService {
   private _estadoAutenticacion = signal<EstadoAutenticacion>(EstadoAutenticacion.comprobando);
 
   public usuarioActual = computed(() => this._usuarioActual());
-  public estadoAutenticacion = computed(() => this._estadoAutenticacion);
+  public estadoAutenticacion = computed(() => this._estadoAutenticacion());
 
   constructor() { }
 
