@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { UsuarioActualizacionDto } from './dto/usuario-actualizacion.dto';
 import { UsuarioCreacionDto } from './dto/usuario-creacion.dto';
 import { UsuarioIniciarSesionDto } from './dto/usuario-inicio-sesion.dto';
+import { UsuarioRegistroDto } from './dto/usuario-registro.dto';
 
 @Controller('usuarios')
 export class AuthController {
@@ -17,6 +18,11 @@ export class AuthController {
   @Post('/inicio-sesion')
   iniciarSesion(@Body() dto: UsuarioIniciarSesionDto) {
     return this.servicioAutenticacion.iniciarSesion(dto);
+  }
+
+  @Post('/registro')
+  registro(@Body() dto: UsuarioRegistroDto) {
+    return this.servicioAutenticacion.registro(dto);
   }
 
   @Get()
