@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
 
-import { map, Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 
 import { environment } from '../../../environments/environments';
 import { EstadoAutenticacion } from '../enums';
@@ -33,9 +33,8 @@ export class AutenticacionService {
           localStorage.setItem('token', token);
           console.log({ usuario, token });
         }),
-        map(() => true)
-
-        // TODO: Errores
+        map(() => true),
+        catchError(error => throwError(() => error.error.message))
       );
   }
 
