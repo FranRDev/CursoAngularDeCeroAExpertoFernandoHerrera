@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { JwtService } from '@nestjs/jwt';
 
 import * as bcrypt from 'bcryptjs';
-import { Model } from 'mongoose';
+import { model, Model } from 'mongoose';
 
 import { InicioSesionRespuesta } from './interfaces/inicio-sesion-respuesta.interface';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
@@ -51,6 +51,12 @@ export class AuthService {
 
   buscarTodo(): Promise<Usuario[]> {
     return this.modeloUsuario.find();
+  }
+
+  async buscarUsuarioPorId(id: string) {
+    const usuario = await this.modeloUsuario.findById(id);
+    const { clave, ...datosUsuario } = usuario.toJSON();
+    return datosUsuario;
   }
 
   findOne(id: number) {

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Request } from '@nestjs/common';
 
 import { AuthService } from './auth.service';
 import { AutorizacionGuard } from './guards/autorizacion.guard';
@@ -9,6 +9,7 @@ import { UsuarioRegistroDto } from './dto/usuario-registro.dto';
 
 @Controller('usuarios')
 export class AuthController {
+  
   constructor(private readonly servicioAutenticacion: AuthService) { }
 
   @Post()
@@ -28,7 +29,7 @@ export class AuthController {
 
   @Get()
   @UseGuards(AutorizacionGuard)
-  buscarTodo() {
+  buscarTodo(@Request() solicitud: Request) {
     return this.servicioAutenticacion.buscarTodo();
   }
 
