@@ -1,9 +1,11 @@
 import { BadRequestException, Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { JwtService } from '@nestjs/jwt';
 
 import * as bcrypt from 'bcryptjs';
 import { Model } from 'mongoose';
 
+import { JwtPayload } from './interfaces/jwt-payload.interface';
 import { Usuario } from './entities/usuario.entity';
 import { UsuarioActualizacionDto } from './dto/usuario-actualizacion.dto';
 import { UsuarioCreacionDto } from './dto/usuario-creacion.dto';
@@ -12,7 +14,10 @@ import { UsuarioIniciarSesionDto } from './dto/usuario-inicio-sesion.dto';
 @Injectable()
 export class AuthService {
 
-  constructor(@InjectModel(Usuario.name) private modeloUsuario: Model<Usuario>) { }
+  constructor(
+    @InjectModel(Usuario.name) private modeloUsuario: Model<Usuario>,
+    private servicioJwt: JwtService
+  ) { }
 
   async crear(dto: UsuarioCreacionDto): Promise<Usuario> {
     try {
@@ -32,9 +37,9 @@ export class AuthService {
     const { correo, clave } = dto;
     const usuario = await this.modeloUsuario.findOne({ correo });
     if (!usuario) { throw new UnauthorizedException('Credenciales inválidas'); }
-    if (!bcrypt.compareSync(clave, usuario.clave)) { throw new UnauthorizedException('Credenciales inválidas'); }
+    if (!bcrypt.compare(clave, usuario.clave)) { throw new UnauthorizedException('Credenciales inválidas'); }
     const { clave: _, ...datosUsuario } = usuario.toJSON();
-    return { usuario: datosUsuario, token: 'ABC-123' };
+    return { usuario: datosUsuario, token: await this.obtenerJwt({ id: usuario.id}) };
   }
 
   findAll() {
@@ -51,6 +56,10 @@ export class AuthService {
 
   remove(id: number) {
     return `This action removes a #${id} auth`;
+  }
+
+  async obtenerJwt(carga: JwtPayload) {
+    return await this.servicioJwt.signAsync(carga);
   }
 
 }
