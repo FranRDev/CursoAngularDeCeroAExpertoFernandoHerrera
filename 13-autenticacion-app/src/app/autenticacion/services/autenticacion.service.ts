@@ -31,7 +31,6 @@ export class AutenticacionService {
           this._usuarioActual.set(usuario);
           this._estadoAutenticacion.set(EstadoAutenticacion.autenticado);
           localStorage.setItem('token', token);
-          console.log({ usuario, token });
         }),
         map(() => true),
         catchError(error => throwError(() => error.error.message))
