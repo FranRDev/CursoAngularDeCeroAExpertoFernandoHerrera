@@ -39,7 +39,7 @@ export class AuthService {
     const { correo, clave } = dto;
     const usuario = await this.modeloUsuario.findOne({ correo });
     if (!usuario) { throw new UnauthorizedException('Credenciales inválidas'); }
-    if (!bcrypt.compare(clave, usuario.clave)) { throw new UnauthorizedException('Credenciales inválidas'); }
+    if (!bcrypt.compareSync(clave, usuario.clave)) { throw new UnauthorizedException('Credenciales inválidas'); }
     const { clave: _, ...datosUsuario } = usuario.toJSON();
     return { usuario: datosUsuario, token: await this.obtenerJwt({ id: usuario.id }) };
   }
