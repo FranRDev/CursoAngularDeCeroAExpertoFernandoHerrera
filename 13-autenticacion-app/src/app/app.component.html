@@ -1,1 +1,3 @@
-<router-outlet />
+<h1 *ngIf="!comprobacionAutenticacionFinalizada()">Cargando</h1>
+
+<router-outlet *ngIf="comprobacionAutenticacionFinalizada()" />
