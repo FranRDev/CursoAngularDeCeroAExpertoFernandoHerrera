@@ -12,7 +12,6 @@ import { UsuarioActualizacionDto } from './dto/usuario-actualizacion.dto';
 import { UsuarioCreacionDto } from './dto/usuario-creacion.dto';
 import { UsuarioIniciarSesionDto } from './dto/usuario-inicio-sesion.dto';
 import { UsuarioRegistroDto } from './dto/usuario-registro.dto';
-import { domainToUnicode } from 'url';
 
 @Injectable()
 export class AuthService {
@@ -45,9 +44,9 @@ export class AuthService {
     return { usuario: datosUsuario, token: await this.obtenerJwt({ id: usuario.id }) };
   }
 
-  async registro(dto: UsuarioRegistroDto) {
-    await this.crear({ nombre: dto.nombre, correo: dto.correo, clave: dto.clave });
-    return await this.iniciarSesion({ correo: dto.correo, clave: dto.clave });
+  async registro(dto: UsuarioRegistroDto): Promise<InicioSesionRespuesta> {
+    const usuario = await this.crear({ nombre: dto.nombre, correo: dto.correo, clave: dto.clave });
+    return { usuario, token: await this.obtenerJwt({ id: usuario._id }) };
   }
 
   findAll() {
