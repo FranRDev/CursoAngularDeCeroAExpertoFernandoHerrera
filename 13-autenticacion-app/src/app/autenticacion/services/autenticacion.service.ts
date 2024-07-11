@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 
-import { Observable, of } from 'rxjs';
+import { map, Observable, of, tap } from 'rxjs';
 
 import { environment } from '../../../environments/environments';
-import { Usuario } from '../interfaces';
 import { EstadoAutenticacion } from '../enums';
+import { RespuestaInicioSesion, Usuario } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +14,29 @@ export class AutenticacionService {
 
   private readonly urlBase: string = environment.urlBase;
   private clienteHttp = inject(HttpClient);
-  private usuarioActual = signal<Usuario | null>(null);
-  private estadoAutenticacion = signal<EstadoAutenticacion>(EstadoAutenticacion.comprobando);
+  private _usuarioActual = signal<Usuario | null>(null);
+  private _estadoAutenticacion = signal<EstadoAutenticacion>(EstadoAutenticacion.comprobando);
+
+  public usuarioActual = computed(() => this._usuarioActual());
+  public estadoAutenticacion = computed(() => this._estadoAutenticacion);
 
   constructor() { }
 
   inicioSesion(correo: string, clave: string): Observable<boolean> {
-    return of(true);
+    const url = `${this.urlBase}/usuarios/inicio-sesion`;
+    const cuerpo = { correo, clave };
+    return this.clienteHttp.post<RespuestaInicioSesion>(url, cuerpo)
+      .pipe(
+        tap(({ usuario, token }) => {
+          this._usuarioActual.set(usuario);
+          this._estadoAutenticacion.set(EstadoAutenticacion.autenticado);
+          localStorage.setItem('token', token);
+          console.log({ usuario, token });
+        }),
+        map(() => true)
+
+        // TODO: Errores
+      );
   }
 
 }
