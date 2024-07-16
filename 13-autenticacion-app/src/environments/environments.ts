@@ -1,3 +1,3 @@
 export const environment = {
-  urlBase: 'http://localhost:3000'
+  urlBase: 'https://nest-auth-backend-frd.up.railway.app'
 }

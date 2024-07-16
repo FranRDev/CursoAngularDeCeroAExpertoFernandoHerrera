@@ -14,8 +14,8 @@ export class PaginaInicioSesionComponent {
   private servicioAutenticacion = inject(AutenticacionService);
 
   public formulario: FormGroup = this.fb.group({
-    correo: ['fran@r.dev', [Validators.required, Validators.email]],
-    clave: ['123456', [Validators.required, Validators.minLength(6)]]
+    correo: ['', [Validators.required, Validators.email]],
+    clave: ['', [Validators.required, Validators.minLength(6)]]
   });
 
   inicioSesion() {
