@@ -10,7 +10,7 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
     ConfigModule.forRoot(),
     JwtModule.register({ global: true, secret: process.env.JWT_SECRETO, signOptions: { expiresIn: '6h' } }),
-    MongooseModule.forRoot(process.env.MONGO_URI)
+    MongooseModule.forRoot(process.env.MONGO_URI, { dbName: process.env.MONGO_BD })
   ],
   controllers: [],
   providers: [],
