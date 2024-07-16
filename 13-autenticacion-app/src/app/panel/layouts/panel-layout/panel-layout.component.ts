@@ -11,4 +11,8 @@ export class PanelLayoutComponent {
 
   public usuario = computed(() => this.servicioAutenticacion.usuarioActual());
 
+  cerrarSesion() {
+    this.servicioAutenticacion.cerrarSesion();
+  }
+
 }

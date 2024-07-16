@@ -44,7 +44,12 @@ export class AutenticacionService {
   comprobarEstadoAutenticacion(): Observable<boolean> {
     const url = `${this.urlBase}/usuarios/comprobar-token`;
     const token = localStorage.getItem('token');
-    if (!token) { return of(false); }
+
+    if (!token) {
+      this.cerrarSesion();
+      return of(false);
+    }
+
     const cabeceras = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     return this.clienteHttp.get<RespuestaComprobarToken>(url, { headers: cabeceras })
@@ -55,6 +60,12 @@ export class AutenticacionService {
           return of(false);
         })
       );
+  }
+
+  cerrarSesion() {
+    localStorage.removeItem('token');
+    this._usuarioActual.set(null);
+    this._estadoAutenticacion.set(EstadoAutenticacion.noAutenticado);
   }
 
 }
