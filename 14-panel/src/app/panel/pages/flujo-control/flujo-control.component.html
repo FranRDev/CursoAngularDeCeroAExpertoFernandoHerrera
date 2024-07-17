@@ -1,3 +1,4 @@
+<!-- @If -->
 <section class="grid grid-cols-1 md:grid-cols-2 gap-3">
 
   <div class="bg-white rounded shadow p-10">
@@ -8,9 +9,20 @@
     @if(mostrarContenido()) {
     <p>Hola mundo</p>
     } @else {
-      <p>*********</p>
+    <p>*********</p>
     }
 
+  </div>
+
+  <!-- @Switch -->
+  <div class="bg-white rounded shadow p-10">
+    <p>
+      @switch (grado()) {
+      @case ('A') { Por encima de 90 }
+      @case ('B') { Por encima de 80 }
+      @default { Suspenso }
+      }
+    </p>
   </div>
 
 </section>
