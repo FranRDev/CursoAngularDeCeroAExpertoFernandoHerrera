@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './vistas-diferir.component.html',
   styles: ``
 })
-export class VistasDiferirComponent {
+export default class VistasDiferirComponent {
 
 }

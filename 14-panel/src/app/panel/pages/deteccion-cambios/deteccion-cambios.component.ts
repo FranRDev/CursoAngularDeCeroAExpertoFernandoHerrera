@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './deteccion-cambios.component.html',
   styles: ``
 })
-export class DeteccionCambiosComponent {
+export default class DeteccionCambiosComponent {
 
 }

@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './transicion-vista.component.html',
   styles: ``
 })
-export class TransicionVistaComponent {
+export default class TransicionVistaComponent {
 
 }

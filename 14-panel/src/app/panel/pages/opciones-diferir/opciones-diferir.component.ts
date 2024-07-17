@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './opciones-diferir.component.html',
   styles: ``
 })
-export class OpcionesDiferirComponent {
+export default class OpcionesDiferirComponent {
 
 }

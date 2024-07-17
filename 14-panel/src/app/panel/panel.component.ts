@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './panel.component.html',
   styles: ``
 })
-export class PanelComponent {
+export default class PanelComponent {
 
 }

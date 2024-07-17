@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './flujo-control.component.html',
   styles: ``
 })
-export class FlujoControlComponent {
+export default class FlujoControlComponent {
 
 }
