@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 
-import { TituloComponent } from '@/shared/titulo/titulo.component';
+import { TituloComponent } from '@shared/titulo/titulo.component';
 
 @Component({
   standalone: true,

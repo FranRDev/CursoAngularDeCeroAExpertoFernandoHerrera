@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 
+import { TituloComponent } from '@shared/titulo/titulo.component';
+
 @Component({
   standalone: true,
-  imports: [],
+  imports: [TituloComponent],
   templateUrl: './opciones-diferir.component.html',
   styles: ``
 })
