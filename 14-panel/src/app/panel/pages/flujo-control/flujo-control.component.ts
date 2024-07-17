@@ -1,10 +1,12 @@
 import { Component, signal } from '@angular/core';
 
+import { TituloComponent } from '@/shared/titulo/titulo.component';
+
 type Grado = 'A' | 'B' | 'F';
 
 @Component({
   standalone: true,
-  imports: [],
+  imports: [TituloComponent],
   templateUrl: './flujo-control.component.html',
   styles: ``
 })
