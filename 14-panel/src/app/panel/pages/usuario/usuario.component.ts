@@ -1,17 +1,17 @@
-import { Component, inject, signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
+import { Component, computed, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 import { switchMap } from 'rxjs';
 
-import { UsuariosService } from '@services/usuarios.service';
 import { TituloComponent } from '@shared/titulo/titulo.component';
+import { UsuariosService } from '@services/usuarios.service';
 
 @Component({
   standalone: true,
   imports: [TituloComponent],
   template: `
-    <titulo titulo="Usuario" />
+    <titulo [titulo]="titulo()" />
 
     @if (usuario()) {
       <section>
@@ -40,6 +40,12 @@ export default class UsuarioComponent {
       switchMap(({ id }) => this.servicioUsuario.obtenerUsuarioPorId(id))
     )
   )
+
+  public titulo = computed(() => {
+    const titulo: string = 'Información del usuario';
+    if (!this.usuario()) { return titulo; }
+    return `${titulo}: ${this.usuario()?.first_name} ${this.usuario()?.last_name}`
+  });
 
   // constructor() {
   //   this.ruta.params.subscribe(parametros => {
