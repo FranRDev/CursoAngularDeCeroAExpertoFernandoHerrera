@@ -1,10 +1,15 @@
-export interface RespuestaUsuario {
+export interface RespuestaUsuarios {
   page:        number;
   per_page:    number;
   total:       number;
   total_pages: number;
   data:        Usuario[];
   support:     Support;
+}
+
+export interface RespuestaUsuario {
+  data:    Usuario;
+  support: Support;
 }
 
 export interface Usuario {
