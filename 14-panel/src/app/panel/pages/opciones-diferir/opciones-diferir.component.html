@@ -6,11 +6,85 @@
 
   @defer (on interaction) {
     <cargadores-pesados-rapidos claseCss="bg-blue-500 h-20">
-      <span>En interacción</span>
+      <span>on interaction</span>
     </cargadores-pesados-rapidos>
   } @placeholder {
     <div class="w-full h-20 bg-purple-100">
       Clic en el div
+    </div>
+  }
+</section>
+
+<section>
+  <hr class="my-y">
+
+  <button #interaccionBoton class="p-2 bg-blue-500 hover:bg-blue-700 transition-all rounded text-white my-2">
+    ¡Cliquéame!
+  </button>
+
+  @defer (on interaction(interaccionBoton)) {
+    <cargadores-pesados-rapidos claseCss="bg-blue-500 h-20">
+      <span>on interaction 2</span>
+    </cargadores-pesados-rapidos>
+  } @placeholder {
+    <div class="w-full h-20 bg-purple-100">
+      Clic en el botón
+    </div>
+  }
+</section>
+
+<section>
+  <hr class="my-y">
+
+  @defer (on hover) {
+    <cargadores-pesados-rapidos claseCss="bg-blue-500 h-20">
+      <span>on hover</span>
+    </cargadores-pesados-rapidos>
+  } @placeholder {
+    <div class="w-full h-20 bg-purple-100">
+      Pasa por encima
+    </div>
+  }
+</section>
+
+<section>
+  <hr class="my-y">
+
+  @defer (on immediate) {
+    <cargadores-pesados-rapidos claseCss="bg-blue-500 h-20">
+      <span>on immediate</span>
+    </cargadores-pesados-rapidos>
+  } @placeholder {
+    <div class="w-full h-20 bg-purple-100">
+      Inmediato
+    </div>
+  }
+</section>
+
+<section>
+  <hr class="my-y">
+
+  @defer (on timer(2000)) {
+    <cargadores-pesados-rapidos claseCss="bg-green-500 h-20">
+      <span>on timer</span>
+    </cargadores-pesados-rapidos>
+  } @placeholder {
+    <div class="w-full h-20 bg-purple-100">
+      2 segundos
+    </div>
+  }
+</section>
+
+<section>
+  <hr class="my-y">
+
+  @defer (on hover; prefetch on idle) {
+    <cargadores-pesados-rapidos claseCss="bg-green-500 h-20">
+      <span>on hover - prefetch on idle</span>
+    </cargadores-pesados-rapidos>
+  } @placeholder {
+    <div class="w-full h-20 bg-purple-100">
+
     </div>
   }
 </section>
