@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { UsuariosService } from '@services/usuarios.service';
+import { TituloComponent } from '@shared/titulo/titulo.component';
 
 @Component({
   standalone: true,
-  imports: [],
+  imports: [TituloComponent, RouterModule],
   templateUrl: './usuarios.component.html',
   styles: ``
 })
