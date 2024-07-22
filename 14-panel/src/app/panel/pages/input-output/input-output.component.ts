@@ -13,6 +13,7 @@ import { interval, take, tap } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class InputOutputComponent implements OnDestroy {
+
   productos = signal<Producto[]>([
     { id: 1, nombre: `Producto 1`, cantidad: 0 },
     { id: 2, nombre: `Producto 2`, cantidad: 0 }
@@ -30,8 +31,12 @@ export default class InputOutputComponent implements OnDestroy {
     )
     .subscribe();
 
-    ngOnDestroy(): void {
-      this.intervaloSuscripcion.unsubscribe();
-    }
+  ngOnDestroy(): void {
+    this.intervaloSuscripcion.unsubscribe();
+  }
+
+  actualizarProducto(producto: Producto, cantidad: number) {
+    this.productos.update((productos) => productos.map((p) => (p.id === producto.id ? { ...p, cantidad } : p)));
+  }
 
 }

@@ -3,6 +3,6 @@
 
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
   @for (producto of productos(); track producto.id) {
-    <tarjeta-producto />
+    <tarjeta-producto [producto]="producto" (incrementoCantidad)="actualizarProducto(producto, $event)" />
   }
 </div>
