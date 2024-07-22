@@ -13,6 +13,7 @@ export const routes: Routes = [
       { path: 'usuario/:id', title: 'Usuario', loadComponent: () => import('./panel/pages/usuario/usuario.component') },
       { path: 'usuarios', title: 'Usuarios', loadComponent: () => import('./panel/pages/usuarios/usuarios.component') },
       { path: 'vistas-diferir', title: 'Vistas diferir', loadComponent: () => import('./panel/pages/vistas-diferir/vistas-diferir.component') },
+      { path: 'input-output', title: 'Input - Output', loadComponent: () => import('./panel/pages/input-output/input-output.component') },
       { path: '', redirectTo: 'flujo-control', pathMatch: 'full' },
     ]
   },
