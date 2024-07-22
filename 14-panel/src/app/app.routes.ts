@@ -18,5 +18,5 @@ export const routes: Routes = [
       { path: '', redirectTo: 'flujo-control', pathMatch: 'full' },
     ]
   },
-  { path: '', redirectTo: '/panel', pathMatch: 'full' }
+  { path: '', redirectTo: (ruta) => '/panel/material', pathMatch: 'full' }
 ];
