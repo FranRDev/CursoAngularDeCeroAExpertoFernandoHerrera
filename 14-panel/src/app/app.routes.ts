@@ -14,6 +14,7 @@ export const routes: Routes = [
       { path: 'usuarios', title: 'Usuarios', loadComponent: () => import('./panel/pages/usuarios/usuarios.component') },
       { path: 'vistas-diferir', title: 'Vistas diferir', loadComponent: () => import('./panel/pages/vistas-diferir/vistas-diferir.component') },
       { path: 'input-output', title: 'Input - Output', loadComponent: () => import('./panel/pages/input-output/input-output.component') },
+      { path: 'material', title: 'Angular Material', loadComponent: () => import('./panel/pages/material/material.component') },
       { path: '', redirectTo: 'flujo-control', pathMatch: 'full' },
     ]
   },

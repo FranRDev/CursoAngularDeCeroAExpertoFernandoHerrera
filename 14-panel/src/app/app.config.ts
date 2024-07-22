@@ -1,4 +1,5 @@
-import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter, withViewTransitions } from '@angular/router';
 
@@ -16,7 +17,8 @@ export const appConfig: ApplicationConfig = {
         },
       })
     ),
-    provideHttpClient()
+    provideHttpClient(),
+    provideAnimationsAsync()
     //importProvidersFrom() - Importación forma clásica
   ]
 };
