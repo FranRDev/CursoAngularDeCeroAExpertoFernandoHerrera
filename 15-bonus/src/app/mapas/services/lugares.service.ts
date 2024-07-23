@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { ClienteApiLugares } from '../api';
 import { Feature, RespuestaLugares } from '../interfaces/lugares.interface';
 
 @Injectable({ providedIn: 'root' })
@@ -15,7 +15,7 @@ export class LugaresService {
   cargandoLugares: boolean = false;
   lugares: Feature[] = [];
 
-  constructor(private clienteHttp: HttpClient) {
+  constructor(private clienteApiLugares: ClienteApiLugares) {
     this.obtenerLocalizacionUsuario();
   }
 
@@ -36,11 +36,11 @@ export class LugaresService {
   }
 
   obtenerLugaresPorBusqueda(busqueda: string = '') {
-    // TODO: Evaluar búsqueda vacía.
+    if (!this.localizacionUsuario) { throw new Error('No hay localización de usuario'); }
 
     this.cargandoLugares = true;
 
-    this.clienteHttp.get<RespuestaLugares>(`https://api.mapbox.com/search/geocode/v6/forward?q=${busqueda}&proximity=-84.2448778042322%2C10.076706870292938&access_token=`)
+    this.clienteApiLugares.get<RespuestaLugares>(busqueda, { params: { proximity: this.localizacionUsuario.join(',') } })
       .subscribe(respuesta => {
         console.log(respuesta.features);
 
