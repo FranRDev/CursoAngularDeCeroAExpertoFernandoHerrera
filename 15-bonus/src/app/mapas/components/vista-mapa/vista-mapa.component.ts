@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
-import { Map } from 'mapbox-gl';
+import { Map, Popup, Marker } from 'mapbox-gl';
 
 import { LugaresService } from '../../services/lugares.service';
 
@@ -24,6 +24,17 @@ export class VistaMapaComponent implements AfterViewInit {
       center: this.servicioLugares.localizacionUsuario, // [lng, lat]
       zoom: 14, // starting zoom
     });
+
+    const popup = new Popup()
+      .setHTML(`
+        <h6>Aquí estoy</h6>
+        <span>Estoy en este lugar del mundo</span>
+      `);
+
+    new Marker({ color: 'red' })
+      .setLngLat(this.servicioLugares.localizacionUsuario)
+      .setPopup(popup)
+      .addTo(mapa);
   }
 
 }
