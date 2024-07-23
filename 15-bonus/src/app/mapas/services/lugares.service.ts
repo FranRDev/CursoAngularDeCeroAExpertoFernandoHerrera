@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { ClienteApiLugares } from '../api';
 import { Feature, RespuestaLugares } from '../interfaces/lugares.interface';
+import { MapaService } from './mapas.service';
 
 @Injectable({ providedIn: 'root' })
 export class LugaresService {
@@ -15,7 +16,10 @@ export class LugaresService {
   cargandoLugares: boolean = false;
   lugares: Feature[] = [];
 
-  constructor(private clienteApiLugares: ClienteApiLugares) {
+  constructor(
+    private clienteApiLugares: ClienteApiLugares,
+    private servicioMapa: MapaService
+  ) {
     this.obtenerLocalizacionUsuario();
   }
 
@@ -48,8 +52,9 @@ export class LugaresService {
 
     this.clienteApiLugares.get<RespuestaLugares>(busqueda, { params: { proximity: this.localizacionUsuario.join(',') } })
       .subscribe(respuesta => {
-        this.lugares = respuesta.features;
         this.cargandoLugares = false;
+        this.lugares = respuesta.features;
+        this.servicioMapa.crearMarcadoresDeLugares(this.lugares);
       });
   }
 
