@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { LngLatBounds, LngLatLike, Map, Marker, Popup } from 'mapbox-gl';
+import { LngLatBounds, LngLatLike, Map, Marker, Popup, SourceSpecification } from 'mapbox-gl';
 
 import { ClienteApiDirecciones } from '../api';
 import { Feature } from '../interfaces/lugares.interface';
@@ -67,6 +67,32 @@ export class MapaService {
     })
 
     this.mapa?.fitBounds(limites, { padding: 200 });
+
+    const fuenteDatos: SourceSpecification = {
+      type: 'geojson',
+      data: {
+        type: 'Feature',
+        properties: {},
+        geometry: {
+          type: 'LineString',
+          coordinates: coordenadas
+        }
+      }
+    }
+
+    if (this.mapa?.getLayer('RouteString')) {
+      this.mapa.removeLayer('RouteString');
+      this.mapa.removeSource('RouteString');
+    }
+
+    this.mapa?.addSource('RouteString', fuenteDatos);
+    this.mapa?.addLayer({
+      id: 'RouteString',
+      type: 'line',
+      source: 'RouteString',
+      layout: { 'line-cap': 'round', 'line-join': 'round' },
+      paint: { 'line-color': 'black', 'line-width': 3 }
+    });
   }
 
 }
