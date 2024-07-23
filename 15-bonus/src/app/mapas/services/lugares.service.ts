@@ -58,4 +58,8 @@ export class LugaresService {
       });
   }
 
+  borrarLugares() {
+    this.lugares = [];
+  }
+
 }

@@ -33,6 +33,7 @@ export class ResultadosBusquedaComponent {
 
   obtenerDirecciones(lugar: Feature) {
     if (!this.servicioLugares.localizacionUsuario) { throw Error('No hay localización de usuario'); }
+    this.servicioLugares.borrarLugares();
     this.servicioMapa.obtenerRutaEntreMarcadores(this.servicioLugares.localizacionUsuario, lugar.geometry.coordinates as [number, number]);
   }
 
