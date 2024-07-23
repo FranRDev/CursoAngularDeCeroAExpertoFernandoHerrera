@@ -11,4 +11,10 @@ export class PaginaMapaComponent {
 
   constructor(private servicioLugares: LugaresService) { }
 
+  public hola: boolean = true;
+
+  get localizacionUsuarioLista() {
+    return this.servicioLugares.localizacionUsuarioLista;
+  }
+
 }

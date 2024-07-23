@@ -6,7 +6,7 @@ export class LugaresService {
   localizacionUsuario?: [number, number];
 
   get localizacionUsuarioLista(): boolean {
-    return !!this.localizacionUsuarioLista;
+    return !!this.localizacionUsuario;
   }
 
   constructor() {

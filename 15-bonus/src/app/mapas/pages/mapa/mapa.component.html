@@ -1,1 +1,5 @@
-<p>mapa works!</p>
+<carga *ngIf="!localizacionUsuarioLista; else vistaMapa" />
+
+<ng-template #vistaMapa>
+  <vista-mapa />
+</ng-template>
