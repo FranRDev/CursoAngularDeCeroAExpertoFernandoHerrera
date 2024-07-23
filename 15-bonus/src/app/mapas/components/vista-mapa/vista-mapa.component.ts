@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 import { Map, Popup, Marker } from 'mapbox-gl';
 
-import { LugaresService, MapasService } from '../../services';
+import { LugaresService, MapaService } from '../../services';
 
 @Component({
   selector: 'vista-mapa',
@@ -15,7 +15,7 @@ export class VistaMapaComponent implements AfterViewInit {
 
   constructor(
     private servicioLugares: LugaresService,
-    private servicioMapas: MapasService
+    private servicioMapas: MapaService
   ) { }
 
   ngAfterViewInit(): void {

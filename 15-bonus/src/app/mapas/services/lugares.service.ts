@@ -36,14 +36,18 @@ export class LugaresService {
   }
 
   obtenerLugaresPorBusqueda(busqueda: string = '') {
+    if (busqueda.length === 0) {
+      this.cargandoLugares = false;
+      this.lugares = [];
+      return;
+    }
+
     if (!this.localizacionUsuario) { throw new Error('No hay localización de usuario'); }
 
     this.cargandoLugares = true;
 
     this.clienteApiLugares.get<RespuestaLugares>(busqueda, { params: { proximity: this.localizacionUsuario.join(',') } })
       .subscribe(respuesta => {
-        console.log(respuesta.features);
-
         this.lugares = respuesta.features;
         this.cargandoLugares = false;
       });

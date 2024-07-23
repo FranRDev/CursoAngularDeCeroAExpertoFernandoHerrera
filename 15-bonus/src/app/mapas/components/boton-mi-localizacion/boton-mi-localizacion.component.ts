@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { LugaresService, MapasService } from '../../services';
+import { LugaresService, MapaService } from '../../services';
 
 @Component({
   selector: 'boton-mi-localizacion',
@@ -11,7 +11,7 @@ export class BotonMiLocalizacionComponent {
 
   constructor(
     private servicioLugares: LugaresService,
-    private servicioMapas: MapasService
+    private servicioMapas: MapaService
   ) { }
 
   irAMiLocalizacion() {

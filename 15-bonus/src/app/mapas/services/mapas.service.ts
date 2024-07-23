@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { LngLatLike, Map } from 'mapbox-gl';
 
 @Injectable({ providedIn: 'root' })
-export class MapasService {
+export class MapaService {
 
   private mapa?: Map;
 
