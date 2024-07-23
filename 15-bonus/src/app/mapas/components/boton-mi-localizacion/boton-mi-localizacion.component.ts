@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { LugaresService, MapasService } from '../../services';
+
 @Component({
   selector: 'boton-mi-localizacion',
   templateUrl: './boton-mi-localizacion.component.html',
@@ -7,8 +9,15 @@ import { Component } from '@angular/core';
 })
 export class BotonMiLocalizacionComponent {
 
+  constructor(
+    private servicioLugares: LugaresService,
+    private servicioMapas: MapasService
+  ) { }
+
   irAMiLocalizacion() {
-    console.log('Ir a mi localización');
+    if (!this.servicioLugares.localizacionUsuarioLista) { throw Error('No hay localización de usuario') };
+    if (!this.servicioMapas.mapaListo) { throw Error('No hay mapa disponible') };
+    this.servicioMapas.volarA(this.servicioLugares.localizacionUsuario!);
   }
 
 }

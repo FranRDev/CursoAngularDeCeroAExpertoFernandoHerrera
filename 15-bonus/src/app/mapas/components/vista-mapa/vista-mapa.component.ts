@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 import { Map, Popup, Marker } from 'mapbox-gl';
 
-import { LugaresService } from '../../services/lugares.service';
+import { LugaresService, MapasService } from '../../services';
 
 @Component({
   selector: 'vista-mapa',
@@ -13,7 +13,10 @@ export class VistaMapaComponent implements AfterViewInit {
 
   @ViewChild('divMapa') elementoDivMapa!: ElementRef;
 
-  constructor(private servicioLugares: LugaresService) { }
+  constructor(
+    private servicioLugares: LugaresService,
+    private servicioMapas: MapasService
+  ) { }
 
   ngAfterViewInit(): void {
     if (!this.servicioLugares.localizacionUsuario) { throw Error('No hay localización del usuario'); }
@@ -35,6 +38,8 @@ export class VistaMapaComponent implements AfterViewInit {
       .setLngLat(this.servicioLugares.localizacionUsuario)
       .setPopup(popup)
       .addTo(mapa);
+
+      this.servicioMapas.establecerMapa(mapa);
   }
 
 }

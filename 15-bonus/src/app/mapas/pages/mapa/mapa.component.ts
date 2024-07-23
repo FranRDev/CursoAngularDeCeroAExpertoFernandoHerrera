@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { LugaresService } from '../../services/lugares.service';
+import { LugaresService } from '../../services';
 
 @Component({
   selector: 'pagina-mapa',

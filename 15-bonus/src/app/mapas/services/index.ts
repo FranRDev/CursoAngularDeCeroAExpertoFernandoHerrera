@@ -1,1 +1,2 @@
-import { LugaresService } from './lugares.service';
+export { LugaresService } from './lugares.service';
+export { MapasService } from './mapas.service';
