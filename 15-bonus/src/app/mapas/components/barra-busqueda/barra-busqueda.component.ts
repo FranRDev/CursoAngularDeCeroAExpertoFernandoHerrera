@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class BarraBusquedaComponent {
 
+  private temporizador?: NodeJS.Timeout;
+
+  busquedaCambiada(busqueda: string = '') {
+    if (this.temporizador) { clearTimeout(this.temporizador); }
+    this.temporizador = setTimeout(() => {
+      console.log('Búsqueda: ', busqueda);
+    }, 500);
+  }
+
 }

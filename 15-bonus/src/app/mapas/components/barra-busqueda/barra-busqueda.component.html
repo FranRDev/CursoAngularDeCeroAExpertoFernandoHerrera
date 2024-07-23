@@ -1,5 +1,5 @@
 <div class="contenedor-busqueda">
-  <input type="text" class="form-control" placeholder="Buscar lugar...">
+  <input type="text" class="form-control" placeholder="Buscar lugar..." #busqueda (keyup)="busquedaCambiada(busqueda.value)">
   <resultados-busqueda />
 </div>
 
