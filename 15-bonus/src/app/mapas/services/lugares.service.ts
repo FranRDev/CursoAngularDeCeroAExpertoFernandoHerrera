@@ -54,7 +54,7 @@ export class LugaresService {
       .subscribe(respuesta => {
         this.cargandoLugares = false;
         this.lugares = respuesta.features;
-        this.servicioMapa.crearMarcadoresDeLugares(this.lugares);
+        this.servicioMapa.crearMarcadoresDeLugares(this.lugares, this.localizacionUsuario!);
       });
   }
 
