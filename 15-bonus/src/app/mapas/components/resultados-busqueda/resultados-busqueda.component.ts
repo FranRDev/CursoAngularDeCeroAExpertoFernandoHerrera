@@ -31,4 +31,9 @@ export class ResultadosBusquedaComponent {
     this.servicioMapa.volarA([lng, lat]);
   }
 
+  obtenerDirecciones(lugar: Feature) {
+    if (!this.servicioLugares.localizacionUsuario) { throw Error('No hay localización de usuario'); }
+    this.servicioMapa.obtenerRutaEntreMarcadores(this.servicioLugares.localizacionUsuario, lugar.geometry.coordinates as [number, number]);
+  }
+
 }

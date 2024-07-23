@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 
 import { LngLatBounds, LngLatLike, Map, Marker, Popup } from 'mapbox-gl';
+
+import { ClienteApiDirecciones } from '../api';
 import { Feature } from '../interfaces/lugares.interface';
+import { RespuestaDirecciones, Route } from '../interfaces/direcciones.interface';
 
 @Injectable({ providedIn: 'root' })
 export class MapaService {
@@ -12,6 +15,8 @@ export class MapaService {
   get mapaListo() {
     return !!this.mapa;
   }
+
+  constructor(private clienteApiDirecciones: ClienteApiDirecciones) { }
 
   establecerMapa(mapa: Map) {
     this.mapa = mapa;
@@ -43,6 +48,25 @@ export class MapaService {
     limites.extend(localizacionUsuario);
 
     this.mapa.fitBounds(limites, { padding: 200 });
+  }
+
+  obtenerRutaEntreMarcadores(inicio: [number, number], fin: [number, number]) {
+    console.log({ inicio, fin });
+
+    this.clienteApiDirecciones.get<RespuestaDirecciones>(`/${inicio.join(',')};${fin.join(',')}`)
+      .subscribe(respuesta => this.dibujarPolilinea(respuesta.routes[0]));
+  }
+
+  private dibujarPolilinea(ruta: Route) {
+    console.log({ kms: ruta.distance / 1000, duracion: ruta.duration / 60 });
+
+    const coordenadas = ruta.geometry.coordinates;
+    const limites = new LngLatBounds();
+    coordenadas.forEach(([lng, lat]) => {
+      limites.extend([lng, lat]);
+    })
+
+    this.mapa?.fitBounds(limites, { padding: 200 });
   }
 
 }

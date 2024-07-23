@@ -10,6 +10,6 @@
 
     <p>{{ lugar.properties.place_formatted }}</p>
 
-    <button class="btn btn-sm" [ngClass]="(lugar.id === idSeleccionado ? 'btn-outline-light' : 'btn-outline-primary')">Direcciones</button>
+    <button class="btn btn-sm" (click)="obtenerDirecciones(lugar)" [ngClass]="(lugar.id === idSeleccionado ? 'btn-outline-light' : 'btn-outline-primary')">Direcciones</button>
   </li>
 </ul>

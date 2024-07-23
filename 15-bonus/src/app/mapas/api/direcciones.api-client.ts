@@ -13,6 +13,7 @@ export class ClienteApiDirecciones extends HttpClient {
   }
 
   public override get<T>(url: string) {
+    console.log(url);
     url = this.urlBase + url;
 
     return super.get<T>(url, {
